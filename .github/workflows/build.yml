@@ -1,0 +1,37 @@
+name: BUILD
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  Build:
+    name: Build and publish web docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull project
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: bywebdad
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build image
+        run: docker build -t ghcr.io/webdadby/site-webdad .
+
+      - name: Publish web image
+        run: docker push ghcr.io/webdadby/site-webdad:latest
+
+  Deploy:
+    name: Deploy the project to the server
+    needs:
+      - Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deploy webhook
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          https://dokploy.webdad.by/api/deploy/dM8dXWEHrfDpDVYs1QJr1
