@@ -12,6 +12,8 @@ jobs:
   Build:
     name: Build and publish web docker image
     runs-on: ubuntu-latest
+    env:
+      GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
     steps:
       - name: Pull project
         uses: actions/checkout@v4
@@ -24,10 +26,24 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build image
-        run: docker build -t ghcr.io/bywebdad/site-webdad .
+        run: docker build -t ghcr.io/bywebdad/site-webdad:latest .
 
       - name: Publish web image
         run: docker push ghcr.io/bywebdad/site-webdad:latest
+
+      - name: Login to GHCR as webdadby (optional)
+        if: ${{ env.GHCR_TOKEN != '' }}
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: webdadby
+          password: ${{ env.GHCR_TOKEN }}
+
+      - name: Tag and push to webdadby namespace (optional)
+        if: ${{ env.GHCR_TOKEN != '' }}
+        run: |
+          docker tag ghcr.io/bywebdad/site-webdad:latest ghcr.io/webdadby/site-webdad:latest
+          docker push ghcr.io/webdadby/site-webdad:latest
 
   Deploy:
     name: Deploy the project to the server
