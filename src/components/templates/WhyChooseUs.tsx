@@ -33,7 +33,7 @@ const WhyChooseUs: FC<WhyChooseUsProps> = ({
     <section className="bg-white py-24 dark:bg-gray-950 sm:py-32" aria-labelledby="why-choose-us-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center lg:max-w-3xl">
-          <h2 id="why-choose-us-heading" className="text-base font-semibold text-indigo-600">
+          <h2 id="why-choose-us-heading" className="text-base font-semibold text-brand-500 dark:text-jungle-500">
             {eyebrow}
           </h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-balance dark:text-white">
@@ -51,7 +51,7 @@ const WhyChooseUs: FC<WhyChooseUsProps> = ({
             {items.map((item, idx) => (
               <div key={idx} className="relative pl-16">
                 <dt className="text-base font-semibold text-gray-900 dark:text-white">
-                  <div className="absolute left-0 top-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
+                  <div className="absolute left-0 top-0 flex size-10 items-center justify-center rounded-lg bg-brand-500 dark:bg-jungle-500">
                     {item.icon ?? <CheckCircleIcon aria-hidden className="size-6 text-white" />}
                   </div>
                   {item.title}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Dialog,
   DialogPanel,
@@ -24,6 +24,7 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import ThemeToggle from '@atoms/ThemeToggle'
 import Logo from '@atoms/Logo'
+import Link from 'next/link'
 const products = [
   { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
   { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
@@ -38,15 +39,31 @@ const callsToAction = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 inset-x-0 z-50 border-b border-gray-900/5 bg-white/80 backdrop-blur supports-backdrop-blur:bg-white/80 dark:border-white/10 dark:bg-gray-900/80 dark:supports-backdrop-blur:bg-gray-900/80">
+    <header
+      className={`sticky top-0 inset-x-0 z-50 transition-colors duration-300 border-b ${
+        isScrolled
+          ? 'border-gray-900/5 bg-white/80 backdrop-blur supports-backdrop-blur:bg-white/80 dark:border-white/10 dark:bg-gray-900/80 dark:supports-backdrop-blur:bg-gray-900/80'
+          : 'border-transparent bg-transparent backdrop-blur-0 dark:border-transparent'
+      }`}
+    >
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link href="/" className="-m-1.5 p-1.5" aria-label="На главную">
+            <span className="sr-only">На главную</span>
             <Logo showLabel={false} alt="NewSite" />
-          </a>
+          </Link>
         </div>
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
@@ -107,11 +124,11 @@ export default function Example() {
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-            Features
+          <a href="/projects" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+            Проекты
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-            Marketplace
+          <a href="/blog" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+            Блог
           </a>
           <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
             Company
@@ -128,10 +145,10 @@ export default function Example() {
         <div className="fixed inset-0 z-50" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+            <Link href="/" className="-m-1.5 p-1.5" aria-label="На главную">
+              <span className="sr-only">На главную</span>
               <Logo showLabel={false} alt="NewSite" />
-            </a>
+            </Link>
             <div className="flex items-center gap-2">
               <ThemeToggle />
               <button
@@ -166,16 +183,16 @@ export default function Example() {
                   </DisclosurePanel>
                 </Disclosure>
                 <a
-                  href="#"
+                  href="/projects"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
-                  Features
+                  Проекты
                 </a>
                 <a
-                  href="#"
+                  href="/blog"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
-                  Marketplace
+                  Блог
                 </a>
                 <a
                   href="#"

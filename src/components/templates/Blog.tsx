@@ -48,7 +48,7 @@ const Blog: FC<BlogProps> = ({
     <section className="bg-white py-24 dark:bg-gray-950 sm:py-32" aria-labelledby="blog-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center lg:max-w-3xl">
-          <h2 id="blog-heading" className="text-base font-semibold text-indigo-600">
+          <h2 id="blog-heading" className="text-base font-semibold text-brand-500 dark:text-jungle-500">
             {eyebrow}
           </h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-balance">

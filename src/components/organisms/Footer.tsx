@@ -31,7 +31,7 @@ const Footer: FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 border-t border-gray-200/60 bg-white pt-16 pb-8 dark:border-white/10 dark:bg-gray-900">
+    <footer className="relative z-10 border-t border-gray-200/60 bg-white pt-16 pb-8 dark:border-white/10 dark:bg-shark-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Верхняя сетка: бренд + навигация */}
         <div className="mb-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">

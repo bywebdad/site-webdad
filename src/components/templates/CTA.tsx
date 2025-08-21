@@ -40,7 +40,7 @@ const CTA: FC<CTAProps> = ({
             <circle r={512} cx={512} cy={512} fill="url(#radial-cta)" fillOpacity="0.7" />
             <defs>
               <radialGradient id="radial-cta">
-                <stop stopColor="#7775D6" />
+                <stop stopColor="#FF7317" />
                 <stop offset={1} stopColor="#E935C1" />
               </radialGradient>
             </defs>
@@ -53,7 +53,7 @@ const CTA: FC<CTAProps> = ({
               <ButtonLink
                 href={primaryAction.href}
                 aria-label={primaryAction.ariaLabel ?? primaryAction.label}
-                variant="secondary"
+                variant="primary"
                 size="md"
                 className="shadow-sm"
               >
