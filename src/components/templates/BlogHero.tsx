@@ -17,7 +17,7 @@ const BlogHero: FC<BlogHeroProps> = ({
   videoSrc = '/blog/0_1080_N.mp4',
 }) => {
   return (
-    <section className="relative overflow-hidden bg-white dark:bg-gray-950" aria-label="Hero Блог">
+    <section className="relative overflow-hidden bg-white dark:bg-gray-900" aria-label="Hero Блог">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">

@@ -83,12 +83,22 @@ const ProjectCard: FC<ProjectCardProps> = ({
           {title}
         </h3>
         <p className="text-white/70 text-sm mb-3">{description}</p>
-        <span
-          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/15 text-white/90 transition group-hover:bg-white/10"
-          aria-hidden="true"
-        >
-          <CtaIcon />
-        </span>
+        {href ? (
+          <Link
+            href={href}
+            className="relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/15 text-white/90 transition group-hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+            aria-label={ariaLabel ?? `Перейти к проекту: ${title}`}
+          >
+            <CtaIcon />
+          </Link>
+        ) : (
+          <span
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/15 text-white/90 transition group-hover:bg-white/10"
+            aria-hidden="true"
+          >
+            <CtaIcon />
+          </span>
+        )}
       </div>
     </>
   );
@@ -102,7 +112,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   if (href) {
     return (
       <article className={rootClasses} aria-label={ariaLabel ?? title}>
-        <Link href={href} className="absolute inset-0" aria-label={ariaLabel ?? title} />
+        <Link href={href} className="absolute inset-0 z-0" aria-label={ariaLabel ?? title} />
         {cardContent}
       </article>
     );

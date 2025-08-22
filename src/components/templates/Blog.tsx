@@ -45,7 +45,7 @@ const Blog: FC<BlogProps> = ({
   posts = defaultPosts,
 }) => {
   return (
-    <section className="bg-white py-24 dark:bg-gray-950 sm:py-32" aria-labelledby="blog-heading">
+    <section className="bg-white py-24 dark:bg-gray-900 sm:py-32" aria-labelledby="blog-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center lg:max-w-3xl">
           <h2 id="blog-heading" className="text-base font-semibold text-brand-500 dark:text-jungle-500">

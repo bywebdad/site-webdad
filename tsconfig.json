@@ -35,8 +35,14 @@
       "@templates/*": [
         "src/components/templates/*"
       ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
       "@app/*": [
         "src/app/*"
+      ],
+      "@features/*": [
+        "src/components/features/*"
       ]
     },
     "incremental": true

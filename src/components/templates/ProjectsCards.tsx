@@ -20,7 +20,8 @@ const defaultItems: ProjectsCardsProps['items'] = [
     description: 'Keyboard-first, zero-friction navigation and editing.',
     imageUrl:
       'https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/78877756-9e45-410e-b630-78c3dfb8e94c_1600w.jpg',
-    ctaVariant: 'arrow',
+    ctaVariant: 'plus',
+    href: '#',
   },
   {
     title: 'Crafted with care',
@@ -42,6 +43,7 @@ const ProjectsCards: FC<ProjectsCardsProps> = ({ id = 'cards', items = defaultIt
             description={item.description}
             imageUrl={item.imageUrl}
             ctaVariant={item.ctaVariant}
+            href={item.href}
           />
         ))}
       </div>

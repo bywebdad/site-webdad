@@ -10,7 +10,7 @@ const Services: FC<ServicesProps> = ({
   title = 'Полный цикл IT-услуг'
 }) => {
   return (
-    <section className=" py-24 dark:bg-gray-950 sm:py-32">
+    <section className=" py-24 dark:bg-gray-900 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="text-center text-base font-semibold text-brand-500 dark:text-jungle-500">{eyebrow}</h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl dark:text-white">
