@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'gradient';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,6 +13,7 @@ const variants: Record<ButtonVariant, string> = {
   primary: 'bg-brand text-white hover:bg-brand-600 focus-visible:ring-brand',
   secondary: 'bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 focus-visible:ring-slate-400',
   ghost: 'bg-transparent text-slate-900 hover:bg-slate-100 focus-visible:ring-slate-400',
+  gradient: 'bg-gradient-to-r from-brand to-brand-600 text-white hover:from-brand-600 hover:to-brand-700 focus-visible:ring-brand shadow-lg transition-transform will-change-transform hover:scale-[1.02]'
 };
 const sizes: Record<ButtonSize, string> = {
   sm: 'h-9 px-3 text-sm',

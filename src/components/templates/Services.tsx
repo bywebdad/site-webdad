@@ -20,7 +20,7 @@ const Services: FC<ServicesProps> = ({
         <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: 'Разработка программного обеспечения',
+              title: 'Разработка ПО',
               description: 'Создаём современные веб- и мобильные приложения под ключ.',
               img: 'https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png',
               alt: 'Mobile friendly preview',

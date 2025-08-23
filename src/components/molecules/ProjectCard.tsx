@@ -66,7 +66,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
     onClick?.();
   };
 
-  const CtaIcon = ctaVariant === 'arrow' ? ArrowIcon : PlusIcon;
+  const DefaultIcon = ctaVariant === 'arrow' ? ArrowIcon : PlusIcon;
+  const HoverIcon = ctaVariant === 'arrow' ? PlusIcon : ArrowIcon;
 
   const cardContent = (
     <>
@@ -86,17 +87,27 @@ const ProjectCard: FC<ProjectCardProps> = ({
         {href ? (
           <Link
             href={href}
-            className="relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/15 text-white/90 transition group-hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+            className="group relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand dark:bg-jungle-500 text-white border border-brand dark:border-jungle-500 transition hover:bg-brand-600 group-hover:bg-brand-600 dark:group-hover:bg-jungle-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
             aria-label={ariaLabel ?? `Перейти к проекту: ${title}`}
           >
-            <CtaIcon />
+            <span className="block group-hover:hidden">
+              <DefaultIcon />
+            </span>
+            <span className="hidden group-hover:block">
+              <HoverIcon />
+            </span>
           </Link>
         ) : (
           <span
-            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/15 text-white/90 transition group-hover:bg-white/10"
+            className="group inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white dark:bg-jungle-500 border border-brand dark:border-jungle-500 transition group-hover:bg-brand-600 dark:group-hover:bg-white"
             aria-hidden="true"
           >
-            <CtaIcon />
+            <span className="block group-hover:hidden">
+              <DefaultIcon />
+            </span>
+            <span className="hidden group-hover:block">
+              <HoverIcon />
+            </span>
           </span>
         )}
       </div>

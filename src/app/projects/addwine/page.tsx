@@ -11,6 +11,9 @@ import ArtVersionControl from '@features/projects/atoms/ArtVersionControl';
 import ArtUIComponents from '@features/projects/atoms/ArtUIComponents';
 import ArtCollaboration from '@features/projects/atoms/ArtCollaboration';
 import ArtDesignSystem from '@features/projects/atoms/ArtDesignSystem';
+import Blog from '@templates/Blog';
+import RequestForm from '@organisms/RequestForm';
+import SectionHeading from '@atoms/SectionHeading';
 
 export const metadata: Metadata = {
   title: 'Интернет-магазин эксклюзивных винных аксессуаров ручной работы',
@@ -127,8 +130,19 @@ export default function MiniappCoffeePage() {
           showPattern
         />
 
-        
+      <Blog
+        eyebrow="Ещё по проекту"
+        title="Статьи как мы реализовали проект интерент магазина"
+        subtitle="Заметки об интеграциях с CRM и складом, логистике, UX и аналитике, применённых в этом проекте."
+      />  
 
+        <section className="py-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-0">
+            <SectionHeading as="h2" align="left" size="lg" className="mb-6">
+            </SectionHeading>
+            <RequestForm source="addwine" variant="glass" />
+          </div>
+        </section>
 
       </main>
       <Footer />

@@ -130,8 +130,8 @@ export default function Example() {
           <a href="/blog" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
             Блог
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-            Company
+          <a href="/company" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
+            О компании
           </a>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
@@ -195,10 +195,10 @@ export default function Example() {
                   Блог
                 </a>
                 <a
-                  href="#"
+                  href="/company"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
                 >
-                  Company
+                  О компании
                 </a>
               </div>
               <div className="py-6">

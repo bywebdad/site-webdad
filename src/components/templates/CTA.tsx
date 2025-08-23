@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from 'react';
 import ButtonLink from '@atoms/ButtonLink';
+import GradientBlob from '@atoms/GradientBlob';
 
 export type CtaAction = {
   href: string;
@@ -24,31 +25,35 @@ const CTA: FC<CTAProps> = ({
   description = 'Оставьте заявку — и мы бесплатно проконсультируем вас, подберём оптимальное решение и оценим стоимость проекта.',
   primaryAction = { href: '#', label: 'Оставить заявку' },
   secondaryAction = { href: '#', label: 'Learn more' },
-  imageSrc = 'https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png',
+  imageSrc = '/brand/01.png',
   imageAlt = 'App screenshot',
   className = '',
 }) => {
   return (
     <section id={id} className={`bg-white dark:bg-gray-900 ${className}`}>
       <div className="w-full py-24 sm:py-32">
-        <div className="relative isolate overflow-hidden bg-gray-900 shadow-2xl">
+        <div className="relative bg-white dark:bg-gray-900">
+          <GradientBlob
+            wrapperClassName="absolute inset-x-0 -top-64 z-0 transform-gpu blur-3xl pointer-events-none sm:-top-80"
+            innerClassName="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr bg-[length:200%_200%] animate-gradient motion-reduce:animate-none opacity-40 dark:opacity-90 from-brand-200 to-brand-700 dark:from-brand-500 dark:to-jungle-700 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+          />
           <svg
             viewBox="0 0 1024 1024"
             aria-hidden="true"
             className="absolute top-1/2 left-1/2 -z-10 size-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
           >
-            <circle r={512} cx={512} cy={512} fill="url(#radial-cta)" fillOpacity="0.7" />
+            <circle r={512} cx={512} cy={512} fill="url(#radial-cta)" fillOpacity="0.35" />
             <defs>
               <radialGradient id="radial-cta">
                 <stop stopColor="#FF7317" />
-                <stop offset={1} stopColor="#E935C1" />
+                <stop offset={1} stopColor="#FF7317" />
               </radialGradient>
             </defs>
           </svg>
-          <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 md:pt-24 lg:pt-0 lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-20">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-16 md:pt-24 lg:pt-0 lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-20">
             <div className="mx-auto max-w-md text-center lg:mx-0 lg:py-32 lg:text-left lg:col-span-6">
-            <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
-            <p className="mt-6 text-pretty text-lg/8 text-gray-300">{description}</p>
+            <h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{title}</h2>
+            <p className="mt-6 text-pretty text-lg/8 text-gray-700 dark:text-gray-300">{description}</p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               <ButtonLink
                 href={primaryAction.href}
@@ -59,14 +64,7 @@ const CTA: FC<CTAProps> = ({
               >
                 {primaryAction.label}
               </ButtonLink>
-              <a
-                href={secondaryAction.href}
-                aria-label={secondaryAction.ariaLabel ?? secondaryAction.label}
-                className="text-sm/6 font-semibold text-white hover:text-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded"
-              >
-                {secondaryAction.label}
-                <span aria-hidden="true" className="ml-1">→</span>
-              </a>
+
             </div>
             </div>
             <div className="relative mt-16 h-80 lg:mt-8 lg:col-span-6">
@@ -75,7 +73,7 @@ const CTA: FC<CTAProps> = ({
               src={imageSrc}
               width={1824}
               height={1080}
-              className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+              className="absolute right-0 top-60 -translate-y-1/2 w-[40rem] max-w-none"
             />
             </div>
           </div>
