@@ -1,12 +1,14 @@
 import React from 'react';
 import { ImageResponse } from 'next/og';
-import type { NextRequest } from 'next/server';
 import { getPostBySlug, getSiteSettings } from '@lib/cms/payload';
 
 export const runtime = 'edge';
 
-export async function GET(_req: NextRequest, { params }: { params: { slug: string } }) {
-  const { slug } = params;
+export async function GET(
+  _req: Request,
+  { params }: { params: Promise<{ slug: string }> },
+) {
+  const { slug } = await params;
   const [post, settings] = await Promise.all([
     getPostBySlug(slug),
     getSiteSettings(),

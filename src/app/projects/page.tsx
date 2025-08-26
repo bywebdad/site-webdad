@@ -12,6 +12,14 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   const items = [
     {
+      title: 'Телегарам-бот для агентства недвижимости',
+      description:
+        'Мини-приложение для аренды недвижимости, связь с риелтором и помощь в оформлении сделки.',
+      imageUrl: '/projects/GRE/01.png',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/realt-estate-miniapp',
+    },
+    {
       title: 'Интернет-магазин эксклюзивных винных аксессуаров',
       description:
         'Интернет-магазин эксклюзивных винных аксессуаров ручной работы',

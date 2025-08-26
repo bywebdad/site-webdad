@@ -61,7 +61,7 @@ export default function Example() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5" aria-label="На главную">
             <span className="sr-only">На главную</span>
-            <Logo showLabel={false} alt="NewSite" />
+            <Logo alt="NewSite" />
           </Link>
         </div>
         <div className="flex items-center gap-2 lg:hidden">

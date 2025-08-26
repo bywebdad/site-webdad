@@ -1,9 +1,14 @@
 import type { MetadataRoute } from 'next';
-import { getSiteSettings } from '@lib/cms/payload';
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const settings = await getSiteSettings();
-  const base = settings?.domain?.replace(/\/$/, '') || process.env.NEXT_PUBLIC_SITE_URL || '';
+  let base = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://example.com';
+  try {
+    const { getSiteSettings } = await import('@lib/cms/payload');
+    const settings = await getSiteSettings();
+    base = settings?.domain?.replace(/\/$/, '') || base;
+  } catch {
+    // keep fallback base
+  }
   return {
     rules: {
       userAgent: '*',
