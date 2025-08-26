@@ -1,4 +1,7 @@
+"use client";
 import type { FC } from 'react';
+import Button from '@atoms/Button';
+import { useRouter } from 'next/navigation';
 
 export type BlogHeroProps = {
   title?: string;
@@ -16,6 +19,11 @@ const BlogHero: FC<BlogHeroProps> = ({
   ctaHref = '#',
   videoSrc = '/blog/0_1080_N.mp4',
 }) => {
+  const router = useRouter();
+  const handleCtaClick = () => {
+    if (!ctaHref) return;
+    router.push(ctaHref);
+  };
   return (
     <section className="relative overflow-hidden bg-white dark:bg-gray-900" aria-label="Hero Блог">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
@@ -100,13 +108,14 @@ const BlogHero: FC<BlogHeroProps> = ({
                 </div>
               </div>
 
-              <a
-                href={ctaHref}
-                className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white transition-colors hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+              <Button
+                onClick={handleCtaClick}
                 aria-label={ctaLabel}
+                variant="gradient"
+                size="lg"
               >
                 {ctaLabel}
-              </a>
+              </Button>
             </div>
           </div>
         </div>

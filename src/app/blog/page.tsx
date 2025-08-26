@@ -3,15 +3,16 @@ import Navbar from '@organisms/Navbar';
 import Footer from '@organisms/Footer';
 import BlogHero from '@templates/BlogHero';
 import Blog from '@templates/Blog';
-import { getAllPosts } from '@lib/posts';
+import { getAllPosts } from '@lib/cms/payload';
 
 export const metadata: Metadata = {
   title: 'Блог — NewSite',
   description: 'Статьи, практики и новости компании NewSite.',
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts().map((p) => ({
+export default async function BlogPage() {
+  const data = await getAllPosts();
+  const posts = data.map((p) => ({
     title: p.title,
     href: `/blog/${p.slug}`,
     imageSrc: p.coverSrc ?? '/blog/01.png',

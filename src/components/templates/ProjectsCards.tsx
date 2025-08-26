@@ -1,10 +1,14 @@
 import type { FC } from 'react';
+import Link from 'next/link';
 import ProjectCard, { type ProjectCardProps } from '@molecules/ProjectCard';
 
 export type ProjectsCardsProps = {
   id?: string;
   items?: Array<Pick<ProjectCardProps, 'title' | 'description' | 'imageUrl' | 'ctaVariant' | 'href'>>;
   className?: string;
+  showAllButton?: boolean;
+  allHref?: string;
+  allLabel?: string;
 };
 
 const defaultItems: ProjectsCardsProps['items'] = [
@@ -32,20 +36,41 @@ const defaultItems: ProjectsCardsProps['items'] = [
   },
 ];
 
-const ProjectsCards: FC<ProjectsCardsProps> = ({ id = 'cards', items = defaultItems, className = '' }) => {
+const ProjectsCards: FC<ProjectsCardsProps> = ({
+  id = 'cards',
+  items = defaultItems,
+  className = '',
+  showAllButton = false,
+  allHref = '/projects',
+  allLabel = 'Смотреть все проекты',
+}) => {
   return (
     <section id={id} className={`mt-4 md:mt-8 ${className}`} aria-label="Карточки проектов">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {items.map((item) => (
-          <ProjectCard
-            key={item.title}
-            title={item.title}
-            description={item.description}
-            imageUrl={item.imageUrl}
-            ctaVariant={item.ctaVariant}
-            href={item.href}
-          />
-        ))}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {items.map((item) => (
+            <ProjectCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              imageUrl={item.imageUrl}
+              ctaVariant={item.ctaVariant}
+              href={item.href}
+            />
+          ))}
+        </div>
+        {showAllButton ? (
+          <div className="mt-6 md:mt-8 flex justify-center">
+            <Link
+              href={allHref}
+              className="inline-flex items-center gap-2 rounded-full border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-900 dark:text-white shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-900"
+              aria-label={allLabel}
+            >
+              {allLabel}
+              <span aria-hidden className="-mr-1">→</span>
+            </Link>
+          </div>
+        ) : null}
       </div>
     </section>
   );

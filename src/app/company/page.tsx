@@ -6,6 +6,7 @@ import CompanyIntro from '@templates/CompanyIntro';
 import CompanyValues from '@templates/CompanyValues';
 import Clients from '@templates/Clients';
 import RequestForm from '@organisms/RequestForm';
+import FAQ from '@organisms/FAQ';
 
 export const metadata: Metadata = {
   title: 'Компания — NewSite',
@@ -70,14 +71,40 @@ export default function CompanyPage() {
             { label: 'Наша команда →', href: '#' },
           ]}
           stats={[
-            { label: 'Офисы по миру', value: '12' },
-            { label: 'Сотрудников full‑time', value: '300+' },
-            { label: 'Часов в неделю', value: '40' },
-            { label: 'Оплачиваемый отпуск', value: 'Unlimited' },
+            { label: 'Клиентов продолжают работать с нами', value: '88%' },
+            { label: 'Уникального опыта которым мы готовы делиться', value: '+6 лет' },
+            { label: 'Реализованных проектов по всему миру', value: '50+' },
           ]}
         />
 
         <Clients />
+        <FAQ
+          id="faq"
+          title="Частые вопросы (FAQ)"
+          subtitle="Коротко отвечаем на самые популярные вопросы о нашей работе"
+          items={[
+            {
+              question: 'Сколько стоит разработка веб‑приложения?',
+              answer:
+                'Стоимость зависит от объёма функционала и сроков. Мы начинаем с короткого интервью и оценки. Дальше фиксируем бюджет и план работ. Для MVP возможен расширенный Discovery и поэтапная поставка.',
+            },
+            {
+              question: 'Как вы работаете со сроками и рисками?',
+              answer:
+                'Планируем итерациями 1–2 недели, демонстрируем инкременты на каждом спринте, поддерживаем прозрачную доску задач. Риски фиксируем и регулярно пересматриваем, даём ранние предупреждения и варианты.',
+            },
+            {
+              question: 'С каким стеком вы работаете?',
+              answer:
+                'Frontend: Next.js, React, TypeScript, TailwindCSS. Backend/Headless: Node.js, Payload CMS, PostgreSQL. Интеграции с платёжными и внешними системами. Выбираем инструменты под задачи и ограничения.',
+            },
+            {
+              question: 'Можно ли начать с небольшой задачи?',
+              answer:
+                'Да. Мы часто начинаем с пилотной фазы (например, UX‑аудит, прототип, небольшой модуль). Это помогает быстро получить ценность и выстроить процесс.',
+            },
+          ]}
+        />
         
       </main>
       <Footer />

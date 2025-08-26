@@ -3,15 +3,16 @@ import { notFound } from 'next/navigation';
 import Navbar from '@organisms/Navbar';
 import Footer from '@organisms/Footer';
 import Article from '@templates/Article';
-import { getAllSlugs, getPostBySlug } from '@lib/posts';
+import { getAllSlugs, getPostBySlug } from '@lib/cms/payload';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  return getAllSlugs().map((slug: string) => ({ slug }));
+  const slugs = await getAllSlugs();
+  return slugs.map((slug: string) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) return {};
   return {
     title: `${post.title} — NewSite`,
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) return notFound();
 
   return (

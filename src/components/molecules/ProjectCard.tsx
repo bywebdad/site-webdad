@@ -71,51 +71,56 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
   const cardContent = (
     <>
-      {/* Фон-картинка */}
-      <div
-        className="absolute inset-0 bg-cover bg-center [transition:transform_300ms_ease] group-hover:scale-105"
-        style={{ backgroundImage: `url(${imageUrl})` }}
-        aria-hidden="true"
-      />
+      {/* Верх: изображение с оверлеями */}
+      <div className="relative h-80 overflow-hidden rounded-t-3xl">
+        <div
+          className="absolute inset-0 bg-cover bg-center [transition:transform_300ms_ease] group-hover:scale-105"
+          style={{ backgroundImage: `url(${imageUrl})` }}
+          aria-hidden="true"
+        />
 
-      {/* Низ карточки */}
-      <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="text-white text-xl md:text-2xl font-semibold leading-snug tracking-tight mb-1">
+        {/* CTA внизу слева поверх изображения */}
+        <div className="absolute bottom-0 right-0 p-6">
+          {href ? (
+            <span
+              className="group inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand dark:bg-jungle-500 text-white border border-brand dark:border-jungle-500 transition group-hover:bg-brand-600 dark:group-hover:bg-white"
+              aria-hidden="true"
+            >
+              <span className="block group-hover:hidden">
+                <DefaultIcon />
+              </span>
+              <span className="hidden group-hover:block">
+                <HoverIcon />
+              </span>
+            </span>
+          ) : (
+            <span
+              className="group inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white dark:bg-jungle-500 border border-brand dark:border-jungle-500 transition group-hover:bg-brand-600 dark:group-hover:bg-white"
+              aria-hidden="true"
+            >
+              <span className="block group-hover:hidden">
+                <DefaultIcon />
+              </span>
+              <span className="hidden group-hover:block">
+                <HoverIcon />
+              </span>
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Низ: заголовок и описание под карточкой */}
+      <div className="py-5">
+        <h3 className="text-gray-900 dark:text-white text-lg md:text-xl font-semibold leading-snug tracking-tight mb-1">
           {title}
         </h3>
-        <p className="text-white/70 text-sm mb-3">{description}</p>
-        {href ? (
-          <Link
-            href={href}
-            className="group relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand dark:bg-jungle-500 text-white border border-brand dark:border-jungle-500 transition hover:bg-brand-600 group-hover:bg-brand-600 dark:group-hover:bg-jungle-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
-            aria-label={ariaLabel ?? `Перейти к проекту: ${title}`}
-          >
-            <span className="block group-hover:hidden">
-              <DefaultIcon />
-            </span>
-            <span className="hidden group-hover:block">
-              <HoverIcon />
-            </span>
-          </Link>
-        ) : (
-          <span
-            className="group inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white dark:bg-jungle-500 border border-brand dark:border-jungle-500 transition group-hover:bg-brand-600 dark:group-hover:bg-white"
-            aria-hidden="true"
-          >
-            <span className="block group-hover:hidden">
-              <DefaultIcon />
-            </span>
-            <span className="hidden group-hover:block">
-              <HoverIcon />
-            </span>
-          </span>
-        )}
+        <p className="text-gray-600 dark:text-gray-400 text-sm">{description}</p>
       </div>
     </>
   );
 
   const rootClasses = [
-    'group relative rounded-3xl overflow-hidden bg-neutral-900 h-80 shadow-xl border border-white/10',
+    'group relative rounded-t-3xl ',
     'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500',
     className,
   ].join(' ');
@@ -123,7 +128,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
   if (href) {
     return (
       <article className={rootClasses} aria-label={ariaLabel ?? title}>
-        <Link href={href} className="absolute inset-0 z-0" aria-label={ariaLabel ?? title} />
+        {/* Кликабельная зона только над изображением */}
+        <Link href={href} className="absolute inset-x-0 top-0 h-80 z-10" aria-label={ariaLabel ?? title} />
         {cardContent}
       </article>
     );

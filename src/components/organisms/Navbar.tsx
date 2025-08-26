@@ -26,11 +26,10 @@ import ThemeToggle from '@atoms/ThemeToggle'
 import Logo from '@atoms/Logo'
 import Link from 'next/link'
 const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Разработка ПО', description: 'Веб‑приложения на заказ', href: '/services/development', icon: SquaresPlusIcon },
+  { name: 'ИТ‑аутсорсинг', description: 'Выделенные команды и поддержка по SLA', href: '/services/outsourcing', icon: ArrowPathIcon },
+  { name: 'ИТ‑консалтинг', description: 'Аудит, стратегия и архитектура', href: '/services/consulting', icon: FingerPrintIcon },
+  { name: 'AI и аналитика', description: 'ML, Big Data, BI‑дашборды', href: '/services/ai-analytics', icon: ChartPieIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
@@ -79,7 +78,7 @@ export default function Example() {
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
             <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 dark:text-white">
-              Product
+              Услуги
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400 dark:text-gray-500" />
             </PopoverButton>
 

@@ -24,24 +24,28 @@ const Services: FC<ServicesProps> = ({
               description: 'Создаём современные веб- и мобильные приложения под ключ.',
               img: 'https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png',
               alt: 'Mobile friendly preview',
+              href: '/services/development',
             },
             {
               title: 'IT-аутсорсинг',
               description: 'Эффективная поддержка и развитие вашей ИТ-инфраструктуры.',
               img: 'https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png',
               alt: 'Performance preview',
+              href: '/services/outsourcing',
             },
             {
               title: 'IT-консалтинг',
               description: 'Помогаем выбирать технологии и архитектуру, сокращая риски и сроки.',
               img: 'https://tailwindcss.com/plus-assets/img/component-images/bento-03-security.png',
               alt: 'Security preview',
+              href: '/services/consulting',
             },
             {
               title: 'AI и аналитика',
               description: 'Внедряем ML и big data для бизнес-эффекта и автоматизации.',
               img: 'https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png',
               alt: 'Analytics preview',
+              href: '/services/ai-analytics',
             },
           ].map((item) => (
             <ServiceCard
@@ -50,6 +54,7 @@ const Services: FC<ServicesProps> = ({
               description={item.description}
               img={item.img}
               alt={item.alt}
+              href={item.href}
             />
           ))}
         </div>

@@ -1,5 +1,6 @@
+'use client';
 import type { FC, ReactNode } from 'react';
-import ButtonLink from '@atoms/ButtonLink';
+import { useRouter } from 'next/navigation';
 import GradientBlob from '@atoms/GradientBlob';
 
 export type CtaAction = {
@@ -29,6 +30,20 @@ const CTA: FC<CTAProps> = ({
   imageAlt = 'App screenshot',
   className = '',
 }) => {
+  const router = useRouter();
+
+  const handlePrimaryClick = () => {
+    if (!primaryAction?.href) return;
+    router.push(primaryAction.href);
+  };
+
+  const handlePrimaryKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handlePrimaryClick();
+    }
+  };
+
   return (
     <section id={id} className={`bg-white dark:bg-gray-900 ${className}`}>
       <div className="w-full py-24 sm:py-32">
@@ -55,16 +70,15 @@ const CTA: FC<CTAProps> = ({
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{title}</h2>
             <p className="mt-6 text-pretty text-lg/8 text-gray-700 dark:text-gray-300">{description}</p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-              <ButtonLink
-                href={primaryAction.href}
+              <button
+                type="button"
                 aria-label={primaryAction.ariaLabel ?? primaryAction.label}
-                variant="primary"
-                size="md"
-                className="shadow-sm"
+                onClick={handlePrimaryClick}
+                onKeyDown={handlePrimaryKeyDown}
+                className="inline-flex items-center justify-center gap-2 rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 transition bg-gradient-to-r from-brand to-brand-600 text-white hover:from-brand-600 hover:to-brand-700 focus-visible:ring-brand shadow-lg transition-transform will-change-transform hover:scale-[1.02] dark:from-jungle-500 dark:hover:from-jungle-500 dark:to-jungle-700 dark:hover:to-jungle-700 h-12 px-6 text-lg"
               >
                 {primaryAction.label}
-              </ButtonLink>
-
+              </button>
             </div>
             </div>
             <div className="relative mt-16 h-80 lg:mt-8 lg:col-span-6">
