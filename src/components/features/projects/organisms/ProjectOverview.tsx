@@ -75,8 +75,8 @@ const ProjectOverview: FC<ProjectOverviewProps> = ({
               alt={image.alt ?? ''}
               width={1600}
               height={1000}
-              sizes="(min-width: 1024px) 48rem, 100vw"
-              className={`w-[48rem] max-w-none rounded-xl shadow-xl ring-1 sm:w-[57rem] ${imageFrame} ${image.className ?? ''}`}
+              sizes="(min-width: 1024px) 57rem, 100vw"
+              className={`w-full max-w-[48rem] sm:max-w-[57rem] h-auto rounded-xl shadow-xl ring-1 ${imageFrame} ${image.className ?? ''}`}
             />
           </div>
 

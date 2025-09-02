@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MiniappCoffeePage() {
+export default function AddWinePage() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-gray-900 dark:text-white">
       <Navbar />

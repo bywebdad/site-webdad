@@ -35,6 +35,30 @@ export default function ProjectsPage() {
       ctaVariant: 'arrow' as const,
       href: '/projects/miniapp-coffee',
     },
+    {
+      title: 'Upgrade — образовательная платформа для корпоративного обучения',
+      description:
+        'WEBDAD Upgrade — образовательная платформа для корпоративного обучения',
+      imageUrl: '/projects/upgrade/02.png',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/upgrade',
+    },
+    {
+      title: 'Корпоративный сайт застройщика жилых комплексов',
+      description:
+        'От дизайна до разработки корпоративного сайта застройщика элитного жилья',
+      imageUrl: '/projects/amatar/01.png',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/amatar',
+    },
+    {
+      title: 'Система геовизуализации от идеи до промышленного решения',
+      description:
+        'Система геовизуализации для анализа и визуализации данных на карте.',
+      imageUrl: '/projects/geomarketing/09.png',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/geomarketing',
+    },
   ];
   return (
     <div className="flex min-h-screen flex-col">

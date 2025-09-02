@@ -3,28 +3,23 @@ import Logo from '@atoms/Logo';
 import SocialLink from '@atoms/SocialLink';
 import FooterColumn, { type FooterLinkItem } from '@molecules/FooterColumn';
 
-const footerProducts: FooterLinkItem[] = [
-  { label: 'Платёжные решения', href: '#' },
-  { label: 'Интеграции', href: '#' },
-  { label: 'Карты и счета', href: '#' },
-  { label: 'Инвестиции', href: '#' },
-  { label: 'Кредиты', href: '#' },
+const footerCompany: FooterLinkItem[] = [
+  { label: 'О компании', href: '/company' },
+  { label: 'Услуги', href: '/services' },
+  { label: 'Проекты', href: '/projects' },
+  { label: 'Карьера', href: '/careers' },
+  { label: 'Блог', href: '/blog' },
 ];
 
-const footerCompany: FooterLinkItem[] = [
-  { label: 'О компании', href: '#' },
-  { label: 'Карьера', href: '#' },
-  { label: 'Пресса', href: '#' },
-  { label: 'Блог', href: '#' },
-  { label: 'Контакты', href: '#' },
+const footerProducts: FooterLinkItem[] = [
+  { label: 'Journal', href: '#' },
 ];
 
 const footerSupport: FooterLinkItem[] = [
-  { label: 'Центр помощи', href: '#' },
-  { label: 'Сообщество', href: '#' },
-  { label: 'Безопасность', href: '#' },
-  { label: 'Конфиденциальность', href: '#' },
-  { label: 'Условия использования', href: '#' },
+  { label: 'Разработка ПО', href: '/services/development' },
+  { label: 'Аутсорсинг', href: '/services/outsourcing' },
+  { label: 'Консалтинг', href: '/services/consulting' },
+  { label: 'AI и аналитика', href: '/services/ai-analytics' },
 ];
 
 const Footer: FC = () => {
@@ -79,9 +74,10 @@ const Footer: FC = () => {
           </div>
 
           {/* Быстрые ссылки */}
-          <FooterColumn title="Продукты" links={footerProducts} />
           <FooterColumn title="Компания" links={footerCompany} />
-          <FooterColumn title="Поддержка" links={footerSupport} />
+          <FooterColumn title="Услуги" links={footerSupport} />
+          <FooterColumn title="Продукты" links={footerProducts} />
+
         </div>
 
         {/* Разделитель и нижняя строка */}
