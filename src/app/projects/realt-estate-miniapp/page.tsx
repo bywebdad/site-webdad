@@ -15,6 +15,9 @@ import Blog from '@templates/Blog';
 import RequestForm from '@organisms/RequestForm';
 import SectionHeading from '@atoms/SectionHeading';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Телегарам-бот для агентства недвижимости',
   description:
