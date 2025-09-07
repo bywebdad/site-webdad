@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import BlogCard, { type BlogCardProps } from '../molecules/BlogCard';
 
 export type BlogProps = {
@@ -6,44 +5,34 @@ export type BlogProps = {
   title?: string;
   subtitle?: string;
   posts?: BlogCardProps[];
+  limit?: number;
 };
 
-const defaultPosts: BlogCardProps[] = [
-  {
-    title: 'Увеличьте конверсию: практические советы',
-    href: '#',
-    imageSrc:
-      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1400&auto=format&fit=crop',
-    imageAlt: 'Рабочее место с ноутбуком и аксессуарами',
-    date: 'Mar 16, 2020',
-    author: { name: 'Michael Foster' },
-  },
-  {
-    title: 'SEO в 2025: как поисковая оптимизация двигает продажи',
-    href: '#',
-    imageSrc:
-      'https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?q=80&w=1400&auto=format&fit=crop',
-    imageAlt: 'Стол, ноутбук и растения у окна',
-    date: 'Mar 10, 2020',
-    author: { name: 'Lindsay Walton' },
-  },
-  {
-    title: 'Улучшите клиентский опыт с помощью аналитики',
-    href: '#',
-    imageSrc:
-      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1400&auto=format&fit=crop',
-    imageAlt: 'Настольный монитор и рабочее место',
-    date: 'Feb 12, 2020',
-    author: { name: 'Tom Cook' },
-  },
-];
-
-const Blog: FC<BlogProps> = ({
+const Blog = async ({
   eyebrow = 'Из нашего блога',
   title = 'Лучшие практики и экспертные советы',
   subtitle = 'Узнавайте, как развивать бизнес с помощью технологий.',
-  posts = defaultPosts,
-}) => {
+  posts,
+  limit = 6,
+}: BlogProps) => {
+  let items: BlogCardProps[] = posts ?? [];
+  if (!items || items.length === 0) {
+    try {
+      const { getAllPosts } = await import('@lib/cms/payload');
+      const data = await getAllPosts({ page: 1, limit });
+      items = data.map((p: any) => ({
+        title: p.title,
+        href: `/blog/${p.slug}`,
+        imageSrc: p.coverSrc ?? '/blog/01.png',
+        imageAlt: p.coverAlt ?? p.title,
+        date: p.date,
+        author: p.author ? { name: p.author.name, avatarSrc: p.author.avatarSrc } : undefined,
+      }));
+    } catch {
+      items = [];
+    }
+  }
+
   return (
     <section className="bg-white py-24 dark:bg-gray-900 sm:py-32" aria-labelledby="blog-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -62,7 +51,7 @@ const Blog: FC<BlogProps> = ({
         </div>
 
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mt-24 lg:max-w-none lg:grid-cols-3">
-          {posts.map((post, idx) => (
+          {items.map((post, idx) => (
             <BlogCard key={idx} {...post} />
           ))}
         </div>
