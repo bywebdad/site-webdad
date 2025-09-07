@@ -10,6 +10,9 @@ import Clients from '@templates/Clients';
 import CTA from '@templates/CTA';
 import Technologies from '@templates/Technologies';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function Page() {
   return (
     <div className="flex min-h-screen flex-col">
