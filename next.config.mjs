@@ -7,8 +7,8 @@ try {
   if (cmsUrl) {
     const u = new URL(cmsUrl);
     cmsHost = u.hostname;
-    const base = { hostname: u.hostname };
-    const parsed = { protocol: u.protocol.replace(':', ''), hostname: u.hostname, ...(u.port ? { port: u.port } : {}) };
+    const base = { hostname: u.hostname, pathname: '/media/**' };
+    const parsed = { protocol: u.protocol.replace(':', ''), hostname: u.hostname, ...(u.port ? { port: u.port } : {}), pathname: '/media/**' };
     // Паттерны: точный из ENV, а также универсальные https/http без порта
     cmsPatterns = [
       parsed,
@@ -33,6 +33,9 @@ const nextConfig = {
       { protocol: 'https', hostname: 's3.amazonaws.com' },
       ...(s3Host ? [{ protocol: 'https', hostname: s3Host }] : []),
       ...(cmsPatterns.length ? cmsPatterns : []),
+      // Явная страховка на случай отсутствия ENV: разрешаем admin.webdad.by/media/*
+      { protocol: 'https', hostname: 'admin.webdad.by', pathname: '/media/**' },
+      { protocol: 'http', hostname: 'admin.webdad.by', pathname: '/media/**' },
     ],
   },
 };
