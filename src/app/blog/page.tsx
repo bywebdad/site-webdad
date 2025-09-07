@@ -10,8 +10,9 @@ export const metadata: Metadata = {
   description: 'Статьи, практики и новости компании NewSite.',
 };
 
-export default async function BlogPage({ searchParams }: { searchParams?: { tag?: string; author?: string } }) {
-  const { tag: selectedTagId, author: selectedAuthorId } = (searchParams || ({} as any)) as any;
+export default async function BlogPage({ searchParams }: { searchParams?: Promise<{ tag?: string; author?: string }> }) {
+  const sp = (await (searchParams || Promise.resolve({}))) as any;
+  const { tag: selectedTagId, author: selectedAuthorId } = sp || ({} as any);
 
   let posts: Array<any> = [];
   let tags: Array<{ id: string; title: string }> = [];
