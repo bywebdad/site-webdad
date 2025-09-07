@@ -28,6 +28,14 @@ export default function ProjectsPage() {
       href: '/projects/addwine',
     },
     {
+      title: 'Аналитические дашборды рынка недвижимости',
+      description:
+        'Мы разработали комплексную систему аналитики, которая отображает ключевые метрики рынка в режиме реального времени.',
+      imageUrl: '/projects/real-estate-analytics/01.mp4',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/real-estate-analytics',
+    },
+    {
       title: 'Miniapp Coffee — мини‑приложение для кофейни',
       description:
         'Мини‑приложение для оформления заказов, оплаты и программ лояльности прямо в мобильном вебе.',
@@ -58,6 +66,14 @@ export default function ProjectsPage() {
       imageUrl: '/projects/geomarketing/09.png',
       ctaVariant: 'arrow' as const,
       href: '/projects/geomarketing',
+    },
+    {
+      title: 'Современный интернет-магазин для бокалов Sophienwald',
+      description:
+        'Каждый бокал заслуживает не только великолепного вина — но и достойного представления',
+      imageUrl: '/projects/sophienwald/01.png',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/sophienwald',
     },
   ];
   return (

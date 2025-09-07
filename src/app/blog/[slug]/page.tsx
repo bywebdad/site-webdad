@@ -20,14 +20,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const { getPostBySlug } = await import('@lib/cms/payload');
     const post = await getPostBySlug(slug);
     if (!post) return {};
+    const seo = post.seo || {};
+    const title = seo.metaTitle || `${post.title} — NewSite`;
+    const description = seo.metaDescription || post.excerpt || undefined;
+    const ogTitle = seo.ogTitle || title;
+    const ogDescription = seo.ogDescription || description;
+    const ogImageUrl = seo.ogImage?.url || post.coverSrc || undefined;
+    const canonical = seo.canonicalUrl || undefined;
+    const robots = (seo.noindex || seo.nofollow)
+      ? {
+          index: seo.noindex ? false : true,
+          follow: seo.nofollow ? false : true,
+        }
+      : undefined;
+
     return {
-      title: `${post.title} — NewSite`,
-      description: post.excerpt ?? undefined,
+      title,
+      description,
+      alternates: canonical ? { canonical } : undefined,
+      robots,
       openGraph: {
-        title: post.title,
-        description: post.excerpt,
-        images: post.coverSrc ? [{ url: post.coverSrc }] : undefined,
+        title: ogTitle,
+        description: ogDescription,
+        images: ogImageUrl ? [{ url: ogImageUrl }] : undefined,
         type: 'article',
+      },
+      twitter: {
+        card: ogImageUrl ? 'summary_large_image' : 'summary',
+        title: ogTitle,
+        description: ogDescription,
+        images: ogImageUrl ? [ogImageUrl] : undefined,
       },
     };
   } catch {

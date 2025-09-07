@@ -69,15 +69,30 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const DefaultIcon = ctaVariant === 'arrow' ? ArrowIcon : PlusIcon;
   const HoverIcon = ctaVariant === 'arrow' ? PlusIcon : ArrowIcon;
 
+  // Определяем, является ли источник видео (.mp4)
+  const isVideo = imageUrl?.toLowerCase().endsWith('.mp4');
+
   const cardContent = (
     <>
-      {/* Верх: изображение с оверлеями */}
+      {/* Верх: медиа-превью (изображение/видео) с оверлеями */}
       <div className="relative h-80 overflow-hidden rounded-t-3xl">
-        <div
-          className="absolute inset-0 bg-cover bg-center [transition:transform_300ms_ease] group-hover:scale-105"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-          aria-hidden="true"
-        />
+        {isVideo ? (
+          <video
+            className="absolute inset-0 h-full w-full object-cover [transition:transform_300ms_ease] group-hover:scale-105"
+            src={imageUrl}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label={title}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 bg-cover bg-center [transition:transform_300ms_ease] group-hover:scale-105"
+            style={{ backgroundImage: `url(${imageUrl})` }}
+            aria-hidden="true"
+          />
+        )}
 
         {/* CTA внизу слева поверх изображения */}
         <div className="absolute bottom-0 right-0 p-6">

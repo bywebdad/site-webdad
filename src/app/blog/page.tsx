@@ -3,17 +3,26 @@ import Navbar from '@organisms/Navbar';
 import Footer from '@organisms/Footer';
 import BlogHero from '@templates/BlogHero';
 import Blog from '@templates/Blog';
+import BlogFilters from '@molecules/BlogFilters';
 
 export const metadata: Metadata = {
   title: 'Блог — NewSite',
   description: 'Статьи, практики и новости компании NewSite.',
 };
 
-export default async function BlogPage() {
+export default async function BlogPage({ searchParams }: { searchParams?: { tag?: string; author?: string } }) {
+  const { tag: selectedTagId, author: selectedAuthorId } = (searchParams || ({} as any)) as any;
+
   let posts: Array<any> = [];
+  let tags: Array<{ id: string; title: string }> = [];
+  let authors: Array<{ id: string; name: string }> = [];
   try {
-    const { getAllPosts } = await import('@lib/cms/payload');
-    const data = await getAllPosts();
+    const { getAllPosts, getAllTags, getAllAuthors } = await import('@lib/cms/payload');
+    const [data, tagList, authorList] = await Promise.all([
+      getAllPosts({ tagIds: selectedTagId ? [selectedTagId] : [], authorId: selectedAuthorId }),
+      getAllTags(),
+      getAllAuthors(),
+    ]);
     posts = data.map((p: any) => ({
       title: p.title,
       href: `/blog/${p.slug}`,
@@ -22,8 +31,12 @@ export default async function BlogPage() {
       date: p.date,
       author: p.author ? { name: p.author.name, avatarSrc: p.author.avatarSrc } : undefined,
     }));
+    tags = tagList;
+    authors = authorList;
   } catch {
     posts = [];
+    tags = [];
+    authors = [];
   }
 
   return (
@@ -31,6 +44,7 @@ export default async function BlogPage() {
       <Navbar />
       <main className="flex-1">
         <BlogHero />
+        <BlogFilters tags={tags} authors={authors} selectedTagId={selectedTagId} selectedAuthorId={selectedAuthorId} />
         <Blog posts={posts} />
       </main>
       <Footer />
