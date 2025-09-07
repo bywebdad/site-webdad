@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+
 export const metadata: Metadata = {
   title: 'NewSite',
   description: 'Landing built with Next.js and TailwindCSS',
+  metadataBase: new URL(siteUrl),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
