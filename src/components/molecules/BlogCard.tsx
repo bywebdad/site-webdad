@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import Image from 'next/image';
+import DateText from '@atoms/DateText';
 
 export type BlogAuthor = {
   name: string;
@@ -43,9 +44,7 @@ const BlogCard: FC<BlogCardProps> = ({
 
       <div className="relative flex h-full flex-col justify-end p-6">
         <div className="mb-2 flex items-center gap-3 text-sm text-white/90">
-          <time dateTime={date} className="shrink-0">
-            {date}
-          </time>
+          <DateText date={date} className="shrink-0" />
           {author && (
             <>
               <span className="select-none text-white/50">•</span>

@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import Image from 'next/image';
+import DateText from '@atoms/DateText';
 
 export type PostMetaProps = {
   date: string;
@@ -8,26 +9,10 @@ export type PostMetaProps = {
   className?: string;
 };
 
-const formatDate = (iso: string) => {
-  try {
-    const d = new Date(iso);
-    if (Number.isNaN(d.getTime())) return iso;
-    return new Intl.DateTimeFormat('ru-RU', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(d);
-  } catch {
-    return iso;
-  }
-};
-
 const PostMeta: FC<PostMetaProps> = ({ date, authorName, authorAvatarSrc, className = '' }) => {
   return (
     <div className={`flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300 ${className}`}>
-      <time dateTime={date} className="shrink-0" aria-label={`Дата публикации: ${formatDate(date)}`}>
-        {formatDate(date)}
-      </time>
+      <DateText date={date} className="shrink-0" />
       {authorName && (
         <>
           <span className="select-none text-gray-400">•</span>
