@@ -40,7 +40,7 @@ const Subscribe: FC<SubscribeProps> = ({
   className = '',
 }) => {
   return (
-    <section id={id} className={`relative overflow-visible bg-white dark:bg-gray-900 py-16 sm:py-24 lg:py-32 ${className}`}>
+    <section id={id} className={`relative overflow-hidden bg-white dark:bg-gray-900 py-16 sm:py-24 lg:py-32 ${className}`}>
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
           <div className="max-w-xl lg:max-w-lg">
@@ -78,10 +78,10 @@ const Subscribe: FC<SubscribeProps> = ({
         </div>
       </div>
 
-      {/* Декоративный верхний градиент */}
-      <div aria-hidden="true" className="absolute left-1/2 -top-24 sm:-top-32 xl:-top-40 z-0 -translate-x-1/2 blur-3xl pointer-events-none">
+      {/* Декоративный градиент ниже контента */}
+      <div aria-hidden="true" className="absolute left-1/2 top-[55%] z-0 -translate-x-1/2 -translate-y-1/2 blur-3xl pointer-events-none">
         <div
-          className="h-64 w-[56rem] bg-gradient-to-tr from-brand-200 to-brand-700 opacity-50 dark:from-jungle-200 dark:to-jungle-700 dark:opacity-40 "
+          className="h-64 w-[36rem] sm:w-[48rem] lg:w-[56rem] bg-gradient-to-tr from-brand-200 to-brand-700 opacity-50 dark:from-jungle-200 dark:to-jungle-700 dark:opacity-40 "
           style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
         />
       </div>

@@ -5,7 +5,7 @@ export type TechCardProps = {
   title: string;
   description: string;
   bullets: readonly string[];
-  ctaLabel: string;
+  ctaLabel?: string;
   icon: ReactNode;
   onClickCta?: () => void;
   className?: string;
@@ -49,14 +49,16 @@ const TechCard: FC<TechCardProps> = ({
         ))}
       </div>
 
-      <button
-        type="button"
-        onClick={onClickCta}
-        className="w-full py-3 px-4 rounded-lg transition-colors border text-white bg-slate-900 hover:bg-slate-800 border-slate-900 dark:text-white dark:bg-white/5 dark:hover:bg-white/10 dark:border-white/10"
-        aria-label={ctaLabel}
-      >
-        {ctaLabel}
-      </button>
+      {ctaLabel ? (
+        <button
+          type="button"
+          onClick={onClickCta}
+          className="w-full py-3 px-4 rounded-lg transition-colors border text-white bg-slate-900 hover:bg-slate-800 border-slate-900 dark:text-white dark:bg-white/5 dark:hover:bg-white/10 dark:border-white/10"
+          aria-label={ctaLabel}
+        >
+          {ctaLabel}
+        </button>
+      ) : null}
     </article>
   );
 };

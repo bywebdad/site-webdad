@@ -4,8 +4,8 @@ import './globals.css';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
 
 export const metadata: Metadata = {
-  title: 'NewSite',
-  description: 'Landing built with Next.js and TailwindCSS',
+  title: 'IT-компания WEBDAD разработка веб-приложений',
+  description: 'Мы специализируемся на комплексных ИТ-решениях, включая разработку сайтов MPA, PWA и ботов для компаний, стремящихся повысить свое присутствие в цифровом пространстве.',
   metadataBase: new URL(siteUrl),
 };
 

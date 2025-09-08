@@ -268,9 +268,7 @@ const Technologies = () => {
                       title={card.title}
                       description={card.description}
                       bullets={card.bullets}
-                      ctaLabel={card.ctaLabel}
                       icon={card.icon}
-                      onClickCta={() => {}}
                     />
                   </div>
                 </div>

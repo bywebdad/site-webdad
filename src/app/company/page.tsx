@@ -9,8 +9,8 @@ import RequestForm from '@organisms/RequestForm';
 import FAQ from '@organisms/FAQ';
 
 export const metadata: Metadata = {
-  title: 'Компания — NewSite',
-  description: 'О компании NewSite: чем мы занимаемся, наши принципы и чем помогаем бизнесу.',
+  title: 'О компании WEBDAD – Инновации и качество в IT-решениях',
+  description: 'Мы WEBDAD, амбициозная ИТ-компания, наша миссия — помочь предприятиям автоматизировать рутинные процессы. Мы работаем с людьми, у которых есть цель.',
 };
 
 export default function CompanyPage() {

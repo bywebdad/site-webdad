@@ -1,55 +1,60 @@
  'use client';
- import type { FC } from 'react';
- import { useMemo, useState } from 'react';
- import CaseCard, { type CaseCardProps } from '@molecules/CaseCard';
+import type { FC } from 'react';
+import { useMemo, useState } from 'react';
+import ProjectCard, { type ProjectCardProps } from '@molecules/ProjectCard';
 
 type TocItem = { label: string; href?: string };
+
+type CaseItem = ProjectCardProps & { category: string };
 
 type CasesProps = {
   id?: string;
   title?: string;
-  tocTitle?: string;
   toc?: TocItem[];
-  items?: CaseCardProps[];
+  items?: CaseItem[];
   className?: string;
 };
 
 const defaultToc: TocItem[] = [
   { label: 'Все' },
-  { label: 'Веб-дизайн' },
-  { label: 'Приложения' },
-  { label: 'Брендинг' },
-  { label: 'Анимация' },
+  { label: 'E‑commerce' },
+  { label: 'Геоаналитика' },
+  { label: 'Недвижимость' },
 ];
 
-const defaultItems: CaseCardProps[] = [
+const defaultItems: CaseItem[] = [
   {
-    title: 'Подборка лучших веб‑сайтов',
-    category: 'Веб-дизайн',
-    imageSrc:
-      'https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-1.2.1&auto=format&fit=crop&w=1565&q=80',
-    imageAlt: 'Веб-сайт на экране',
+    category: 'E‑commerce',
+    title: 'Интернет-магазин эксклюзивных аксессуаров',
+    description:
+      'Мульти‑витрина, интеграции с МойСклад и AmoCRM, маркетплейсы, бонусная программа и личный кабинет.',
+    imageUrl: '/projects/addwine/01.png',
+    href: '/projects/addwine',
+    ctaVariant: 'arrow',
   },
   {
-    title: 'Набор UI‑китов и компонентов',
-    category: 'Приложения',
-    imageSrc:
-      'https://images.unsplash.com/photo-1621609764180-2ca554a9d6f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'UI компоненты',
+    category: 'Геоаналитика',
+    title: 'Система геовизуализации',
+    description:
+      'Единая карта домохозяйств и конкурентов, слои, зоны охвата, прогноз товарооборота и аналитика.',
+    imageUrl: '/projects/geomarketing/09.png',
+    href: '/projects/geomarketing',
+    ctaVariant: 'arrow',
   },
   {
-    title: 'Айдентика: фирменные мокапы',
-    category: 'Брендинг',
-    imageSrc:
-      'https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
-    imageAlt: 'Мобильные мокапы',
+    category: 'Недвижимость',
+    title: 'Telegram‑миниапп для агентства недвижимости',
+    description:
+      'Подбор объектов, уведомления, интеграция с CRM, мобильный UX и быстрая фильтрация.',
+    imageUrl: '/projects/GRE/01.png',
+    href: '/projects/realt-estate-miniapp',
+    ctaVariant: 'arrow',
   },
 ];
 
 const Cases: FC<CasesProps> = ({
   id = 'cases',
   title = 'Портфолио',
-  tocTitle = 'Содержание',
   toc = defaultToc,
   items = defaultItems,
   className = '',
@@ -68,10 +73,10 @@ const Cases: FC<CasesProps> = ({
 
         <div className="mt-8 lg:mt-16 lg:flex lg:-mx-12">
           {/* Левая колонка (TOC) */}
-          <nav className="lg:mx-12" aria-label="Содержание">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{tocTitle}</h3>
+          <nav className="lg:mx-12">
+            {/* toc title removed */}
 
-            <ul className="mt-4 space-y-3 lg:mt-8">
+            <ul className="mt-4 lg:mt-8 flex gap-3 overflow-x-auto pr-1 lg:flex-col lg:gap-3">
               {toc.map((item) => {
                 const isActive = active === item.label;
                 return (
@@ -82,8 +87,8 @@ const Cases: FC<CasesProps> = ({
                       onClick={() => setActive(item.label)}
                       className={
                         isActive
-                          ? 'block text-left font-medium text-indigo-600 underline decoration-indigo-400 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:text-indigo-400 dark:focus-visible:ring-indigo-400'
-                          : 'block text-left text-gray-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:text-gray-300 dark:focus-visible:ring-indigo-400'
+                          ? 'inline-block whitespace-nowrap text-left font-medium text-brand-600 dark:text-jungle-500 underline decoration-brand-400 dark:decoration-jungle-400 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand dark:focus-visible:ring-jungle-500 focus-visible:ring-offset-2'
+                          : 'inline-block whitespace-nowrap text-left text-gray-500 hover:text-brand-600 dark:hover:text-jungle-500 hover:underline decoration-brand-300 dark:decoration-jungle-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand dark:focus-visible:ring-jungle-500 focus-visible:ring-offset-2'
                       }
                     >
                       {item.label}
@@ -94,11 +99,18 @@ const Cases: FC<CasesProps> = ({
             </ul>
           </nav>
 
-          {/* Сетка кейсов */}
+          {/* Сетка кейсов (в стиле ProjectsCards с использованием ProjectCard) */}
           <div className="flex-1 lg:mx-12 lg:mt-0 mt-8">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-              {visibleItems.map((card, i) => (
-                <CaseCard key={i} {...card} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {visibleItems.map((card) => (
+                <ProjectCard
+                  key={`${card.title}-${card.category}`}
+                  title={card.title}
+                  description={card.description}
+                  imageUrl={card.imageUrl}
+                  href={card.href}
+                  ctaVariant={card.ctaVariant}
+                />
               ))}
             </div>
           </div>

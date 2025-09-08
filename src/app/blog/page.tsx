@@ -6,7 +6,7 @@ import Blog from '@templates/Blog';
 import BlogFilters from '@molecules/BlogFilters';
 
 export const metadata: Metadata = {
-  title: 'Блог — NewSite',
+  title: 'Блог — WEBDAD',
   description: 'Статьи, практики и новости компании NewSite.',
 };
 

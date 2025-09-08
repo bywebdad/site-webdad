@@ -25,7 +25,7 @@ export default function Page() {
         <Clients />
         <Technologies />
         <CTA />
-        <Blog />
+        <Blog limit={3} />
         <Subscribe />
       </main>
       <Footer />
