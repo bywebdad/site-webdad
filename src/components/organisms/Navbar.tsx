@@ -71,7 +71,7 @@ export default function Example() {
             onClick={() => setMobileMenuOpen(true)}
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400"
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">Открыть меню</span>
             <Bars3Icon aria-hidden="true" className="size-6" />
           </button>
         </div>
@@ -155,7 +155,7 @@ export default function Example() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400"
               >
-                <span className="sr-only">Close menu</span>
+                <span className="sr-only">Закрыть меню</span>
                 <XMarkIcon aria-hidden="true" className="size-6" />
               </button>
             </div>
@@ -164,12 +164,12 @@ export default function Example() {
             <div className="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">
-                    Product
+                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5" aria-label="Услуги">
+                    Услуги
                     <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                   </DisclosureButton>
                   <DisclosurePanel className="mt-2 space-y-2">
-                    {[...products, ...callsToAction].map((item) => (
+                    {products.map((item) => (
                       <DisclosureButton
                         key={item.name}
                         as="a"

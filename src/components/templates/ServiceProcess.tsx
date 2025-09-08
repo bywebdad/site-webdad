@@ -29,38 +29,44 @@ const ServiceProcess: React.FC<ServiceProcessProps> = ({ title, subtitle, items,
           ) : null}
         </div>
 
-        <div className="mx-auto mt-12 max-w-6xl">
-          {/* Ряд 1: только карточки "Результат" */}
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-stretch">
-            {items.map((item) => (
-              <div key={item.title} className="flex-1 flex">
-                <div className="flex flex-col items-center text-center lg:px-2 mt-4 lg:mt-6 w-full">
-                  <dl className="w-full max-w-xs h-full">
-                    <div className="flex h-full flex-col rounded-lg p-3 ring-1 ring-inset ring-gray-900/5 dark:bg-gray-800/60 dark:ring-white/10">
-                      <dt className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">Результат</dt>
-                      <dd className="text-sm text-gray-900 dark:text-gray-100">{item.result}</dd>
-                    </div>
-                  </dl>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Ряд 2: линия + цифры + тексты */}
+        <div className="mx-auto mt-10 max-w-7xl">
+          {/* Линия + пронумерованные этапы, результат внутри каждого этапа */}
           <div className="relative">
-            <div
-              aria-hidden
-              className="absolute left-0 right-0 top-[29px] lg:top-[69px] hidden h-0.5 bg-gray-200 dark:bg-white/10 lg:block"
-            />
-            <ol className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-6">
+            <div aria-hidden className="pointer-events-none absolute inset-x-0 z-0 top-[calc(8rem+2.25rem)] lg:top-[calc(8rem+2.2rem)] hidden h-px bg-gray-200 dark:bg-white/10 lg:block" />
+            <ol
+              className="grid grid-flow-col auto-cols-[minmax(240px,1fr)] gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth overscroll-x-contain pb-2 lg:pb-0 lg:auto-cols-fr lg:gap-6 lg:overflow-visible"
+              role="region"
+              aria-label="Этапы процесса"
+              aria-roledescription="carousel"
+            >
               {items.map((item, index) => (
-                <li key={item.title} className="relative flex-1">
-                  <div className="flex flex-col items-center text-center lg:pt-14">
-                    <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-[18px] lg:top-[58px] z-10 flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 dark:bg-jungle-500 text-xs font-bold text-white ring-4 ring-white dark:ring-gray-900">
+                <li
+                  key={item.title}
+                  className="group/step relative shrink-0 min-w-[240px] sm:min-w-[280px] max-w-xs lg:max-w-none snap-start lg:flex-1 grid grid-rows-[8rem_3rem_auto] gap-y-3 lg:gap-y-4 items-start text-center"
+                >
+                  {/* Результат (фиксированная высота ряда для выравнивания) */}
+                  <div className="row-start-1 row-end-2 flex items-stretch justify-center">
+                    <dl className="w-full max-w-[16rem] sm:max-w-[18rem] lg:max-w-[13rem]">
+                      <div className="flex h-full w-full flex-col rounded-lg p-3 ring-2 ring-inset ring-gray-900/5 dark:bg-gray-800/60 dark:ring-white/10">
+                        <dt className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">Результат</dt>
+                        <dd className="text-sm leading-5 text-gray-900 dark:text-gray-100">{item.result}</dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  {/* Номер шага в собственной строке фиксированной высоты */}
+                  <div className="row-start-2 row-end-3 flex items-center justify-center relative">
+                    <span className="z-10 flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 dark:bg-jungle-500 text-xs font-bold text-white ring-4 ring-white dark:ring-gray-900">
                       {index + 1}
                     </span>
-                    <h3 className="mt-12 text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">{item.description}</p>
+                  </div>
+
+                  {/* Контент шага */}
+                  <div className="row-start-3 row-end-4">
+                    <div className="mx-auto max-w-[18rem] sm:max-w-[16rem] lg:max-w-[14rem]">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-300">{item.description}</p>
+                    </div>
                   </div>
                 </li>
               ))}
