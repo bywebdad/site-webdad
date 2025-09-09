@@ -21,6 +21,7 @@ export type ServiceShowcaseProps = {
   imageRatio?: string
   customClipPath?: string
   variant?: 'blob' | 'rect'
+  hideDecorations?: boolean
   className?: string
 }
 
@@ -159,6 +160,7 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
   imageRatio = '4 / 3',
   customClipPath,
   variant = 'blob',
+  hideDecorations = false,
   className = '',
 }) => {
   const clipId = `${id}-clip`
@@ -170,14 +172,16 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
     'M 0.05 0.26 C 0.05 0.12 0.15 0.04 0.32 0.04 L 0.68 0.04 C 0.85 0.04 0.95 0.12 0.95 0.30 L 0.95 0.70 C 0.95 0.88 0.85 0.96 0.68 0.96 L 0.46 0.96 C 0.29 0.96 0.18 0.90 0.12 0.80 C 0.11 0.72 0.11 0.59 0.11 0.54 C 0.11 0.42 0.05 0.36 0.05 0.26 Z'
 
   return (
-    <section id={id} className={`relative px-6 md:px-8 ${className}`} aria-label="Промо услуг">
-      {withGrid ? (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 opacity-70 [background-image:linear-gradient(to_right,rgba(2,6,23,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.06)_1px,transparent_1px)] [background-size:32px_32px] dark:[background-image:linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] [mask-image:radial-gradient(120%_80%_at_30%_40%,black,transparent)]"
-        />
-      ) : null}
-      <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center">
+    <section id={id} className={`relative ${className}`} aria-label="Промо услуг">
+      <div className="relative mx-auto max-w-7xl px-6">
+        {withGrid ? (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 opacity-70 [background-image:linear-gradient(to_right,rgba(2,6,23,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.06)_1px,transparent_1px)] [background-size:32px_32px] dark:[background-image:linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] [mask-image:radial-gradient(120%_80%_at_30%_40%,black,transparent)]"
+          />
+        ) : null}
+      
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-x-16 items-start">
         {/* Левый столбец */}
         <div className="lg:col-span-6">
           {eyebrow ? (
@@ -261,7 +265,7 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
               {ctaHref ? (
                 <Link
                   href={ctaHref}
-                  className="absolute -top-3 -right-3 md:-top-4 md:-right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/90 text-white backdrop-blur border border-white/10 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                  className="absolute top-3 right-3 md:top-4 md:right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/90 text-white backdrop-blur border border-white/10 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   aria-label={ctaLabel}
                 >
                   <ArrowUpRightIcon />
@@ -270,20 +274,20 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
 
               {/* Нижняя левая pill */}
               {pillLabel ? (
-                <div className="absolute -bottom-3 md:-bottom-4 left-4 inline-flex items-center rounded-full bg-neutral-900/80 text-white px-3 py-1 text-xs backdrop-blur border border-white/10 shadow-sm">
+                <div className="absolute bottom-3 md:bottom-4 left-4 inline-flex items-center rounded-full bg-neutral-900/80 text-white px-3 py-1 text-xs backdrop-blur border border-white/10 shadow-sm">
                   {pillLabel}
                 </div>
               ) : null}
             </div>
           ) : (
-            <div className="relative w-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl" style={{ aspectRatio: imageRatio }}>
+            <div className={hideDecorations ? "relative w-full overflow-hidden" : "relative w-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl"} style={{ aspectRatio: imageRatio }}>
               <img
                 src={imageSrc}
                 alt={imageAlt}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 m-auto max-w-[88%] max-h-[88%] w-auto h-auto object-contain lg:inset-y-0 lg:left-0 lg:right-auto lg:m-0 lg:my-auto"
                 loading="lazy"
               />
-              {ctaHref ? (
+              {!hideDecorations && ctaHref ? (
                 <Link
                   href={ctaHref}
                   className="absolute top-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/90 text-white backdrop-blur border border-white/10 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
@@ -292,7 +296,7 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
                   <ArrowUpRightIcon />
                 </Link>
               ) : null}
-              {pillLabel ? (
+              {!hideDecorations && pillLabel ? (
                 <div className="absolute bottom-4 left-4 inline-flex items-center rounded-full bg-neutral-900/80 text-white px-3 py-1 text-xs backdrop-blur border border-white/10 shadow-sm">
                   {pillLabel}
                 </div>
@@ -301,6 +305,7 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
           )}
         </div>
       </div>
+    </div>
     </section>
   )
 }

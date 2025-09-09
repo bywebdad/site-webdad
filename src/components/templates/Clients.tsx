@@ -31,7 +31,7 @@ const defaultLogos: Logo[] = [
     className: 'col-span-2 max-h-12 w-full object-contain lg:col-span-1',
   },
   {
-    src: '/clients/.png',
+    src: '/clients/wikidom.png',
     alt: 'SavvyCal',
     className: 'col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1',
   },
@@ -50,7 +50,7 @@ const Clients: FC<ClientsProps> = ({
 }) => {
   return (
     <section id={id} className={`bg-white py-24 sm:py-32 dark:bg-gray-900 ${className}`}>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6">
         <h2 className="text-center text-lg font-semibold text-gray-900 dark:text-white">
           {title}
         </h2>

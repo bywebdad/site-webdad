@@ -57,7 +57,7 @@ export default function Example() {
           : 'border-transparent bg-transparent backdrop-blur-0 dark:border-transparent'
       }`}
     >
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5" aria-label="На главную">
             <span className="sr-only">На главную</span>

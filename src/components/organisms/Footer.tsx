@@ -27,7 +27,7 @@ const Footer: FC = () => {
 
   return (
     <footer className="relative z-10 bg-white pt-16 pb-8  dark:bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6">
         {/* Верхняя сетка: бренд + навигация */}
         <div className="mb-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Бренд */}

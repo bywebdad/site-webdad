@@ -25,7 +25,7 @@ const Hero: FC<HeroProps> = ({
   };
 
   return (
-    <section className="relative isolate px-6 pt-1 lg:px-8">
+    <section className="relative isolate px-6 pt-1">
       {/* top gradient blob */}
       <div
         aria-hidden="true"
@@ -40,7 +40,7 @@ const Hero: FC<HeroProps> = ({
 
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-48">
         <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-          <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-300 dark:ring-white/10 dark:hover:ring-white/20">
+          {/* <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:text-gray-300 dark:ring-white/10 dark:hover:ring-white/20">
             Announcing our next round of funding.
             <a
               href="#"
@@ -49,7 +49,7 @@ const Hero: FC<HeroProps> = ({
               <span aria-hidden="true" className="absolute inset-0" />
               Read more <span aria-hidden="true">&rarr;</span>
             </a>
-          </div>
+          </div> */}
         </div>
         <div className="text-center">
           <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-7xl">
@@ -58,7 +58,7 @@ const Hero: FC<HeroProps> = ({
           <p className="mt-8 text-lg font-medium text-pretty text-gray-500 dark:text-gray-300 sm:text-xl/8">
             {subtitle}
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          {/* <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button onClick={handlePrimaryClick} aria-label={primaryLabel}>
               {primaryLabel}
             </Button>
@@ -68,7 +68,7 @@ const Hero: FC<HeroProps> = ({
             >
               {secondaryLabel} <span aria-hidden="true">→</span>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 

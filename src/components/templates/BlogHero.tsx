@@ -27,7 +27,7 @@ const BlogHero: FC<BlogHeroProps> = ({
   return (
     <section className="relative overflow-hidden bg-white dark:bg-gray-900" aria-label="Hero Блог">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
-        <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-6 sm:static">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {title}

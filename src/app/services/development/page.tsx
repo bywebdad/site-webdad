@@ -73,11 +73,12 @@ export default function ServiceDevelopmentPage() {
           subtitle="Инженерим архитектуру, проектируем UX и поставляем понятными инкрементами. Гарантируем прозрачность, качество и масштабируемость."
           imageSrc="/brand/01.png"
           imageAlt="Витрина кейсов и визуальный стиль"
-          ctaLabel="Подробнее"
+          // ctaLabel="Подробнее"
           ctaHref="/projects"
           pillLabel="Эффективность"
           imageRatio="1 / 1"
           variant="rect"
+          hideDecorations
           features={[
             { title: 'Frontend на Next.js/React', description: 'SSR/SSG, App Router, быстрая загрузка и стабильные релизы.' },
             { title: 'Надёжный бэкенд', description: 'Node.js, Payload CMS, PostgreSQL, очереди, фоновые задачи.' },
@@ -88,7 +89,7 @@ export default function ServiceDevelopmentPage() {
 
         <ProjectsCards
           id="cases"
-          className="mt-12 md:mt-16"
+          className="mt-20 md:mt-20"
           showAllButton
           allHref="/projects"
           allLabel="Смотреть все проекты"

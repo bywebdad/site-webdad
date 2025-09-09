@@ -29,7 +29,7 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({
 
   return (
     <section className="bg-white py-10 dark:bg-gray-900 md:py-16" aria-labelledby={headingId}>
-      <div className="mx-auto max-w-3xl px-6 lg:max-w-5xl lg:px-8">
+      <div className="mx-auto max-w-3xl px-6 lg:max-w-5xl">
         <header className="mb-8">
           <h1
             id={headingId}

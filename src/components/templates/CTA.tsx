@@ -46,7 +46,7 @@ const CTA: FC<CTAProps> = ({
 
   return (
     <section id={id} className={`bg-white dark:bg-gray-900 ${className}`}>
-      <div className="w-full py-24 sm:py-32">
+      <div className="w-full py-16 sm:py-24 lg:py-32">
         <div className="relative bg-white dark:bg-gray-900">
           <GradientBlob
             wrapperClassName="absolute inset-x-0 -top-64 z-0 transform-gpu blur-3xl pointer-events-none sm:-top-80"
@@ -65,7 +65,7 @@ const CTA: FC<CTAProps> = ({
               </radialGradient>
             </defs>
           </svg>
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-16 md:pt-24 lg:pt-0 lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-20">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 pt-16 md:pt-24 lg:pt-0 lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-16">
             <div className="mx-auto max-w-md text-center lg:mx-0 lg:py-32 lg:text-left lg:col-span-6">
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{title}</h2>
             <p className="mt-6 text-pretty text-lg/8 text-gray-700 dark:text-gray-300">{description}</p>
