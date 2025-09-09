@@ -1,40 +1,25 @@
-import type { FC, MouseEvent, KeyboardEvent } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
-type DotProps = {
+interface DotProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
-  onClick?: () => void;
   ariaLabel?: string;
-  controlsId?: string;
-};
+}
 
-const Dot: FC<DotProps> = ({ active = false, onClick, ariaLabel = 'Переключить карточку', controlsId }) => {
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    onClick?.();
-  };
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onClick?.();
-    }
-  };
-
+const Dot = ({ active = false, ariaLabel, className = '', ...props }: DotProps) => {
   return (
     <button
       type="button"
+      className={`
+        w-3 h-3 rounded-full transition-all duration-200 ease-in-out
+        ${active 
+          ? 'bg-brand-500 dark:bg-jungle-500 scale-110' 
+          : 'bg-slate-300 dark:bg-gray-600 hover:bg-slate-400 dark:hover:bg-gray-500'
+        }
+        focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-jungle-500 focus:ring-offset-2
+        ${className}
+      `.trim()}
       aria-label={ariaLabel}
-      aria-controls={controlsId}
-      aria-pressed={active}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-      className={[
-        'rounded-full transition-all',
-        active
-          ? 'w-4 h-4 scale-110 bg-slate-900 dark:bg-white'
-          : 'w-2 h-2 bg-slate-400 hover:bg-slate-500 dark:bg-gray-600 dark:hover:bg-gray-300',
-      ].join(' ')}
+      {...props}
     />
   );
 };

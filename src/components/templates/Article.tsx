@@ -27,7 +27,7 @@ const Article: FC<ArticleProps> = ({
 
   return (
     <section className="bg-white py-12 dark:bg-gray-900 sm:py-16" aria-labelledby={headingId}>
-      <div className="mx-auto max-w-3xl px-6 lg:max-w-4xl lg:px-8">
+      <div className="mx-auto max-w-3xl px-6 lg:max-w-4xl">
         <header className="mb-8">
           <h1
             id={headingId}

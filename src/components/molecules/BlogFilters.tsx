@@ -31,7 +31,7 @@ const BlogFilters: FC<BlogFiltersProps> = ({
 }) => {
   return (
     <section className={`border-y border-black/5 bg-white py-6 dark:border-white/10 dark:bg-gray-900 ${className}`} aria-label="Фильтры блога">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-2" aria-label="Фильтр по тегам">
             <span className="mr-2 text-sm font-medium text-gray-500 dark:text-gray-400">Теги:</span>

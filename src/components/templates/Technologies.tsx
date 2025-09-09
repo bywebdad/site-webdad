@@ -197,8 +197,8 @@ const Technologies = () => {
   };
 
   return (
-    <section className="py-24 sm:py-32 bg-white text-slate-900 dark:bg-gray-900 dark:text-white" aria-label="Наши технологии">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-16 sm:py-24 lg:py-32 bg-white text-slate-900 dark:bg-gray-900 dark:text-white" aria-label="Наши технологии">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           <div className="flex-1 max-w-xl">
             <div className="flex items-center gap-2 text-slate-500 dark:text-gray-400 mb-6">

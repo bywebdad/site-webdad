@@ -21,7 +21,7 @@ const CompanyValues: FC<CompanyValuesProps> = ({
 }) => {
   return (
     <section className={["py-16 sm:py-20", className].join(' ')} aria-labelledby="company-values-title">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="text-center mb-10 sm:mb-12">
           <h3 id="company-values-title" className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {title}
