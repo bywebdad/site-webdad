@@ -5,7 +5,7 @@ import Footer from '@organisms/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Проекты | NewSite',
+  title: 'Проекты | WEBDAD',
   description: 'Наши реализованные проекты и кейсы: веб‑разработка, автоматизация и современные цифровые решения.',
 };
 

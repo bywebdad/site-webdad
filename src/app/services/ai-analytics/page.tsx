@@ -78,6 +78,7 @@ export default function ServiceAiAnalyticsPage() {
           ctaHref="/company"
           pillLabel="ML • BI"
           variant="rect"
+          hideDecorations
           features={[
             { title: 'ML‑модели под задачу', description: 'Прогноз, классификация, рекомендации, NLP/LLM.' },
             { title: 'Data pipelines и DWH', description: 'ETL/ELT, оркестрация, качество данных и каталоги.' },
@@ -94,25 +95,18 @@ export default function ServiceAiAnalyticsPage() {
           allLabel="Смотреть все проекты"
           items={[
             {
-              title: 'Addwine: e‑commerce платформа',
-              description: 'B2C‑магазин с удобным каталогом, фильтрами и промо‑модулями. Next.js + Headless CMS.',
-              imageUrl: '/projects/addwine/01.png',
+              title: 'Система геовизуализации от идеи до промышленного решения',
+              description: 'Система геовизуализации для анализа и визуализации данных на карте.',
+              imageUrl: '/projects/geomarketing/09.png',
               ctaVariant: 'arrow',
-              href: '/projects/addwine',
+              href: '/projects/geomarketing',
             },
             {
-              title: 'Addwine: мобильный checkout',
-              description: 'Ускоренный сценарий оформления заказа и бесшовные оплаты.',
-              imageUrl: '/projects/addwine/02.png',
+              title: 'Аналитические дашборды рынка недвижимости',
+              description: 'Мы разработали комплексную систему аналитики, которая отображает ключевые метрики рынка в режиме реального времени.',
+              imageUrl: '/projects/real-estate-analytics/02.png',
               ctaVariant: 'arrow',
-              href: '/projects/addwine',
-            },
-            {
-              title: 'Addwine: личный кабинет',
-              description: 'История заказов, трекинг статусов, поведенческие рекомендации.',
-              imageUrl: '/projects/addwine/03.png',
-              ctaVariant: 'arrow',
-              href: '/projects/addwine',
+              href: '/projects/real-estate-analytics',
             },
           ]}
         />

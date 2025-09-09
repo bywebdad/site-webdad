@@ -184,11 +184,6 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-x-16 items-start">
         {/* Левый столбец */}
         <div className="lg:col-span-6">
-          {eyebrow ? (
-            <div className="inline-flex items-center rounded-full border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-900 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-200">
-              {eyebrow}
-            </div>
-          ) : null}
           <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white whitespace-pre-line">
             {title}
           </h2>
@@ -227,17 +222,6 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
             </ul>
           </div>
 
-          {ctaHref ? (
-            <div className="mt-7">
-              <Link
-                href={ctaHref}
-                className="inline-flex items-center rounded-full bg-brand text-white px-5 py-3 text-sm font-semibold shadow-sm hover:bg-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-900"
-                aria-label={ctaLabel}
-              >
-                {ctaLabel}
-              </Link>
-            </div>
-          ) : null}
         </div>
 
         {/* Правый столбец */}
@@ -261,16 +245,6 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
                 />
               </svg>
 
-              {/* Кнопка-стрелка в правом верхнем углу */}
-              {ctaHref ? (
-                <Link
-                  href={ctaHref}
-                  className="absolute top-3 right-3 md:top-4 md:right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/90 text-white backdrop-blur border border-white/10 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-                  aria-label={ctaLabel}
-                >
-                  <ArrowUpRightIcon />
-                </Link>
-              ) : null}
 
               {/* Нижняя левая pill */}
               {pillLabel ? (
@@ -287,15 +261,6 @@ const ServiceShowcase: FC<ServiceShowcaseProps> = ({
                 className="absolute inset-0 m-auto max-w-[88%] max-h-[88%] w-auto h-auto object-contain lg:inset-y-0 lg:left-0 lg:right-auto lg:m-0 lg:my-auto"
                 loading="lazy"
               />
-              {!hideDecorations && ctaHref ? (
-                <Link
-                  href={ctaHref}
-                  className="absolute top-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/90 text-white backdrop-blur border border-white/10 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-                  aria-label={ctaLabel}
-                >
-                  <ArrowUpRightIcon />
-                </Link>
-              ) : null}
               {!hideDecorations && pillLabel ? (
                 <div className="absolute bottom-4 left-4 inline-flex items-center rounded-full bg-neutral-900/80 text-white px-3 py-1 text-xs backdrop-blur border border-white/10 shadow-sm">
                   {pillLabel}
