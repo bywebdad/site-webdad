@@ -20,7 +20,7 @@ export default function Page() {
       <main className="flex-1">
         <Hero />
         <Services />
-        <Cases />
+        <Cases showAllButton />
         <WhyChooseUs />
         <Clients />
         <Technologies />

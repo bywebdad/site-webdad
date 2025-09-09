@@ -45,7 +45,7 @@ export default async function BlogPage({ searchParams }: { searchParams?: Promis
       <Navbar />
       <main className="flex-1">
         <BlogHero />
-        <BlogFilters tags={tags} authors={authors} selectedTagId={selectedTagId} selectedAuthorId={selectedAuthorId} />
+        {/* <BlogFilters tags={tags} authors={authors} selectedTagId={selectedTagId} selectedAuthorId={selectedAuthorId} /> */}
         <Blog posts={posts} />
       </main>
       <Footer />

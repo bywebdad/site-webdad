@@ -1,7 +1,9 @@
 'use client';
 import type { FC, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import GradientBlob from '@atoms/GradientBlob';
+import ContactModal from '@molecules/ContactModal';
 
 export type CtaAction = {
   href: string;
@@ -31,8 +33,13 @@ const CTA: FC<CTAProps> = ({
   className = '',
 }) => {
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handlePrimaryClick = () => {
+    if (primaryAction.label === 'Оставить заявку') {
+      setIsModalOpen(true);
+      return;
+    }
     if (!primaryAction?.href) return;
     router.push(primaryAction.href);
   };
@@ -93,6 +100,11 @@ const CTA: FC<CTAProps> = ({
           </div>
         </div>
       </div>
+      
+      <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 };

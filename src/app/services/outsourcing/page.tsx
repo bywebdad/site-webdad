@@ -68,16 +68,16 @@ export default function ServiceOutsourcingPage() {
 
         <ServiceShowcase
           id="showcase-outsourcing"
-          eyebrow="ИТ‑аутсорсинг"
+          // eyebrow="ИТ‑аутсорсинг"
           title={"Усилим вашу команду\nи ускорим релизы"}
           subtitle="Подключаемся в любом статусе продукта: берём весь поток задач или закрываем дефицит ролей. Прозрачно, предсказуемо, без микроменеджмента."
           imageSrc="/brand/01.png"
           imageAlt="ИТ‑аутсорсинг и выделенные команды"
-          ctaLabel="Связаться"
           ctaHref="/company"
           pillLabel="SLA"
           imageRatio="1 / 1"
           variant="rect"
+          hideDecorations
           features={[
             { title: 'Выделенные команды', description: 'Сеньоры и мидлы под ваши задачи. Быстрый старт, плавный онбординг.' },
             { title: 'Гибкое масштабирование', description: 'Быстро расширяем или сокращаем состав без риска для сроков.' },
@@ -101,18 +101,18 @@ export default function ServiceOutsourcingPage() {
               href: '/projects/addwine',
             },
             {
-              title: 'Addwine: мобильный checkout',
-              description: 'Ускоренный сценарий оформления заказа и бесшовные оплаты.',
-              imageUrl: '/projects/addwine/02.png',
+              title: 'Miniapp Coffee — мини‑приложение для кофейни',
+              description: 'Мини‑приложение для оформления заказов, оплаты и программ лояльности прямо в мобильном вебе.',
+              imageUrl: '/projects/miniapp-coffee/1.png',
               ctaVariant: 'arrow',
-              href: '/projects/addwine',
+              href: '/projects/miniapp-coffee',
             },
             {
-              title: 'Addwine: личный кабинет',
-              description: 'История заказов, трекинг статусов, поведенческие рекомендации.',
-              imageUrl: '/projects/addwine/03.png',
+              title: 'Образовательный веб сервис Upgrade для корпоративного обучения',
+              description: 'Upgrade — образовательная платформа для корпоративного обучения',
+              imageUrl: '/projects/upgrade/02.png',
               ctaVariant: 'arrow',
-              href: '/projects/addwine',
+              href: '/projects/upgrade',
             },
           ]}
         />

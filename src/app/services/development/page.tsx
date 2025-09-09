@@ -95,25 +95,25 @@ export default function ServiceDevelopmentPage() {
           allLabel="Смотреть все проекты"
           items={[
             {
-              title: 'Addwine: e‑commerce платформа',
-              description: 'B2C‑магазин с удобным каталогом, фильтрами и промо‑модулями. Next.js + Headless CMS.',
+              title: 'Телегарам-бот для агентства недвижимости',
+              description: 'Мини-приложение для аренды недвижимости, связь с риелтором и помощь в оформлении сделки.',
+              imageUrl: '/projects/GRE/01.png',
+              ctaVariant: 'arrow',
+              href: '/projects/realt-estate-miniapp',
+            },
+            {
+              title: 'Интернет-магазин эксклюзивных винных аксессуаров',
+              description: 'Интернет-магазин эксклюзивных винных аксессуаров ручной работы',
               imageUrl: '/projects/addwine/01.png',
               ctaVariant: 'arrow',
               href: '/projects/addwine',
             },
             {
-              title: 'Addwine: мобильный checkout',
-              description: 'Ускоренный сценарий оформления заказа и бесшовные оплаты.',
-              imageUrl: '/projects/addwine/02.png',
+              title: 'Система геовизуализации от идеи до промышленного решения',
+              description: 'Система геовизуализации для анализа и визуализации данных на карте.',
+              imageUrl: '/projects/geomarketing/09.png',
               ctaVariant: 'arrow',
-              href: '/projects/addwine',
-            },
-            {
-              title: 'Addwine: личный кабинет',
-              description: 'История заказов, трекинг статусов, поведенческие рекомендации.',
-              imageUrl: '/projects/addwine/03.png',
-              ctaVariant: 'arrow',
-              href: '/projects/addwine',
+              href: '/projects/geomarketing',
             },
           ]}
         />

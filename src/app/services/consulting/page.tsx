@@ -74,10 +74,10 @@ export default function ServiceConsultingPage() {
           subtitle="Дадим независимую оценку текущего состояния и предложим путь к целевому: от архитектуры до процессов и метрик."
           imageSrc="/brand/01.png"
           imageAlt="ИТ‑консалтинг: аудит и стратегия"
-          ctaLabel="Связаться"
           ctaHref="/company"
           pillLabel="Аудит"
           variant="rect"
+          hideDecorations
           features={[
             { title: 'Архитектурный аудит', description: 'Обзор систем, интеграций, узких мест и стоимости владения.' },
             { title: 'Стратегия и roadmap', description: 'Цели, гипотезы, quick wins и план внедрения инициатив.' },
@@ -101,18 +101,18 @@ export default function ServiceConsultingPage() {
               href: '/projects/addwine',
             },
             {
-              title: 'Addwine: мобильный checkout',
-              description: 'Ускоренный сценарий оформления заказа и бесшовные оплаты.',
-              imageUrl: '/projects/addwine/02.png',
+              title: 'Современный интернет-магазин для бокалов Sophienwald',
+              description: 'Каждый бокал заслуживает не только великолепного вина — но и достойного представления',
+              imageUrl: '/projects/sophienwald/01.png',
               ctaVariant: 'arrow',
-              href: '/projects/addwine',
+              href: '/projects/sophienwald',
             },
             {
-              title: 'Addwine: личный кабинет',
-              description: 'История заказов, трекинг статусов, поведенческие рекомендации.',
-              imageUrl: '/projects/addwine/03.png',
+              title: 'Корпоративный сайт застройщика жилых комплексов',
+              description: 'От дизайна до разработки корпоративного сайта застройщика элитного жилья',
+              imageUrl: '/projects/amatar/01.png',
               ctaVariant: 'arrow',
-              href: '/projects/addwine',
+              href: '/projects/amatar',
             },
           ]}
         />
