@@ -40,8 +40,21 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     setIsSubmitting(true);
     
     try {
-      // Здесь будет логика отправки формы
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Имитация отправки
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          page: typeof window !== 'undefined' ? window.location.href : undefined,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setSubmitStatus('success');
       
       // Сброс формы через 2 секунды
@@ -56,6 +69,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         onClose();
       }, 2000);
     } catch (error) {
+      console.error('Error sending contact form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

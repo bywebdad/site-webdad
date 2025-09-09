@@ -5,6 +5,7 @@ async function sendToTelegram(data: {
   name: string;
   email: string;
   phone?: string;
+  message?: string;
   source: string;
   page?: string;
 }) {
@@ -16,11 +17,11 @@ async function sendToTelegram(data: {
     return;
   }
 
-  const message = `🔔 Новая заявка с сайта webdad.by!
+  const message = `💬 Новое сообщение с сайта webdad.by!
 
 👤 Имя: ${data.name}
 📧 Email: ${data.email}${data.phone ? `\n📱 Телефон: ${data.phone}` : ''}
-📍 Источник: ${data.source}${data.page ? `\n🌐 Страница: ${data.page}` : ''}
+📍 Источник: ${data.source}${data.page ? `\n🌐 Страница: ${data.page}` : ''}${data.message ? `\n💭 Сообщение: ${data.message}` : ''}
 ⏰ Время: ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Minsk' })}`;
 
   try {
@@ -40,16 +41,16 @@ async function sendToTelegram(data: {
       throw new Error(`Telegram API error: ${response.status}`);
     }
 
-    console.log('Message sent to Telegram successfully');
+    console.log('Contact message sent to Telegram successfully');
   } catch (error) {
-    console.error('Failed to send message to Telegram:', error);
+    console.error('Failed to send contact message to Telegram:', error);
   }
 }
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { name, email, phone, source, page, agree } = data ?? {};
+    const { name, email, phone, message, page } = data ?? {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
     if (!name || String(name).trim().length < 2) {
@@ -58,26 +59,23 @@ export async function POST(req: Request) {
     if (!email || !emailRegex.test(String(email))) {
       return NextResponse.json({ error: "INVALID_EMAIL" }, { status: 400 });
     }
-    if (agree !== true) {
-      return NextResponse.json({ error: "CONSENT_REQUIRED" }, { status: 400 });
-    }
 
     // Отправляем данные в Telegram
     await sendToTelegram({
       name,
       email,
       phone,
-      source: source ?? "projects",
-      page,
+      message,
+      source: "contact_modal",
+      page: page || (typeof window !== "undefined" ? window.location.href : undefined),
     });
 
     // Логируем на сервере
-    console.log("REQUEST_FORM:", {
+    console.log("CONTACT_FORM:", {
       name,
       email,
       phone,
-      source: source ?? "projects",
-      page: page ?? null,
+      message,
       ts: new Date().toISOString(),
     });
 
