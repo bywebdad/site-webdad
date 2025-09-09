@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import {
   Dialog,
   DialogPanel,
@@ -25,6 +25,7 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/
 import ThemeToggle from '@atoms/ThemeToggle'
 import Logo from '@atoms/Logo'
 import Link from 'next/link'
+import ContactPopup from '@molecules/ContactPopup'
 const products = [
   { name: 'Разработка ПО', description: 'Веб‑приложения на заказ', href: '/services/development', icon: SquaresPlusIcon },
   { name: 'ИТ‑аутсорсинг', description: 'Выделенные команды и поддержка по SLA', href: '/services/outsourcing', icon: ArrowPathIcon },
@@ -39,6 +40,8 @@ const callsToAction = [
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [contactPopupOpen, setContactPopupOpen] = useState(false)
+  const contactButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,9 +138,20 @@ export default function Example() {
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
           <ThemeToggle />
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-white">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          <div className="relative">
+            <button 
+              ref={contactButtonRef}
+              onClick={() => setContactPopupOpen(!contactPopupOpen)}
+              className="text-sm/6 font-semibold text-gray-900 dark:text-white hover:text-brand-600 dark:hover:text-jungle-400 transition-colors"
+            >
+              Контакты 
+            </button>
+            <ContactPopup 
+              isOpen={contactPopupOpen} 
+              onClose={() => setContactPopupOpen(false)}
+              triggerRef={contactButtonRef}
+            />
+          </div>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -201,12 +215,15 @@ export default function Example() {
                 </a>
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5"
+                <button
+                  onClick={() => {
+                    setContactPopupOpen(true);
+                    setMobileMenuOpen(false);
+                  }}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5 w-full text-left"
                 >
-                  Log in
-                </a>
+                  Контакты
+                </button>
               </div>
             </div>
           </div>

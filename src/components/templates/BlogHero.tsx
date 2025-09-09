@@ -54,7 +54,7 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt=""
-                          src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
+                          src="/blog/02.png"
                           className="size-full object-cover"
                         />
                       </div>
@@ -64,7 +64,7 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt=""
-                          src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
+                          src="/blog/03.png"
                           className="size-full object-cover"
                         />
                       </div>
@@ -82,7 +82,7 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt=""
-                          src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
+                          src="/blog/04.png"
                           className="size-full object-cover"
                         />
                       </div>
@@ -92,14 +92,14 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt=""
-                          src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
+                          src="/blog/05.png"
                           className="size-full object-cover"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt=""
-                          src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
+                          src="/blog/06.png"
                           className="size-full object-cover"
                         />
                       </div>
@@ -108,14 +108,6 @@ const BlogHero: FC<BlogHeroProps> = ({
                 </div>
               </div>
 
-              <Button
-                onClick={handleCtaClick}
-                aria-label={ctaLabel}
-                variant="gradient"
-                size="lg"
-              >
-                {ctaLabel}
-              </Button>
             </div>
           </div>
         </div>
