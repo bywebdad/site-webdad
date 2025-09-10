@@ -1,16 +1,9 @@
 import type { Metadata } from 'next';
-import Navbar from '@organisms/Navbar';
-import Footer from '@organisms/Footer';
-import ProjectDetails from '@templates/ProjectDetails';
+import ProjectPageLayout from '@templates/ProjectPageLayout';
 import ProjectHero from '@features/projects/organisms/ProjectHero';
 import ProjectResults from '@features/projects/organisms/ProjectResults';
 import ProjectOverview from '@features/projects/organisms/ProjectOverview';
 import { TruckIcon, BuildingOfficeIcon, ClockIcon } from '@heroicons/react/20/solid';
-import ArtPrototyping from '@features/projects/atoms/ArtPrototyping';
-import ArtVersionControl from '@features/projects/atoms/ArtVersionControl';
-import ArtUIComponents from '@features/projects/atoms/ArtUIComponents';
-import ArtCollaboration from '@features/projects/atoms/ArtCollaboration';
-import ArtDesignSystem from '@features/projects/atoms/ArtDesignSystem';
 
 export const metadata: Metadata = {
   title: 'Сайт для логистической компании',
@@ -27,14 +20,11 @@ export const metadata: Metadata = {
 
 export default function WarehousePage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-gray-900 dark:text-white">
-      <Navbar />
-      <main className="flex-1">
+    <ProjectPageLayout>
         <ProjectHero
           title="Сайт для логистической компании"
           subtitle="Мы полностью перезапустили цифровое лицо компании, превратив устаревший сайт в современный инструмент привлечения и обслуживания клиентов"
-          imageSrc="/projects/FDR/07
-          .png"
+          imageSrc="/projects/FDR/07.png"
           imageAlt="Скриншот сайта логистической компании"
           year={2024}
           stack={["Next.js", "TypeScript", "TailwindCSS"]}
@@ -117,12 +107,6 @@ export default function WarehousePage() {
           ]}
           showPattern
         />
-
-        
-
-
-      </main>
-      <Footer />
-    </div>
+    </ProjectPageLayout>
   );
 }
