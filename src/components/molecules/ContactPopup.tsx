@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 interface ContactPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  triggerRef?: React.RefObject<HTMLElement>;
+  triggerRef?: React.RefObject<HTMLButtonElement | null>;
 }
 
 const ContactPopup = ({ isOpen, onClose, triggerRef }: ContactPopupProps) => {
