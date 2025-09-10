@@ -66,13 +66,12 @@ const nextConfig = {
       .concat(cmsHost ? [cmsHost] : []),
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'http', hostname: 'localhost', port: '3001' },
+      { protocol: 'https', hostname: 'localhost', port: '3001' },
       { protocol: 'https', hostname: 's3.amazonaws.com' },
       ...(s3Host ? [{ protocol: 'https', hostname: s3Host }] : []),
       ...(cmsPatterns.length ? cmsPatterns : []),
       // Явная страховка на случай отсутствия ENV: разрешаем admin.webdad.by/media/*
       { protocol: 'https', hostname: 'admin.webdad.by', pathname: '/media/**' },
-      { protocol: 'http', hostname: 'admin.webdad.by', pathname: '/media/**' },
     ],
   },
 };
