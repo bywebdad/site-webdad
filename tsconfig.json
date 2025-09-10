@@ -43,6 +43,9 @@
       ],
       "@features/*": [
         "src/components/features/*"
+      ],
+      "@/types/*": [
+        "src/types/*"
       ]
     },
     "incremental": true

@@ -20,22 +20,11 @@ export default function AgilePage() {
       <Navbar />
       <main className="flex-1">
         <Hero
-          id="agile-hero"
-          eyebrow="Методология"
           title="Agile-разработка"
-          subtitle="Гибкий подход к созданию продуктов"
-          description="Мы используем Agile-методологию для создания продуктов, которые действительно решают бизнес-задачи. Короткие итерации, постоянная обратная связь и адаптация под изменяющиеся требования — так мы гарантируем успех вашего проекта."
-          primaryAction={{
-            href: '/company',
-            label: 'Обсудить проект',
-            ariaLabel: 'Обсудить проект с нашей командой'
-          }}
-          secondaryAction={{
-            href: '/services',
-            label: 'Наши услуги'
-          }}
-          imageSrc="/brand/01.png"
-          imageAlt="Agile-разработка в WEBDAD"
+          subtitle="Мы используем Agile-методологию для создания продуктов, которые действительно решают бизнес-задачи. Короткие итерации, постоянная обратная связь и адаптация под изменяющиеся требования — так мы гарантируем успех вашего проекта."
+          primaryLabel="Обсудить проект"
+          secondaryHref="/services"
+          secondaryLabel="Наши услуги"
         />
 
         <ServiceShowcase
@@ -67,10 +56,9 @@ export default function AgilePage() {
         />
 
         <WhyChooseUs
-          id="agile-benefits"
           title="Преимущества Agile-подхода"
-          subtitle="Почему гибкая методология эффективнее традиционного подхода"
-          features={[
+          description="Почему гибкая методология эффективнее традиционного подхода"
+          items={[
             {
               title: 'Быстрый выход на рынок',
               description: 'MVP готов уже через 4-6 недель. Можете начать получать обратную связь от пользователей и зарабатывать.',
