@@ -12,6 +12,14 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   const items = [
     {
+      title: 'Saas-приложение для управления проектами',
+      description:
+        'Система помогает командам чувствовать результат. Потому что продуктивность — это не количество закрытых задач, а движения к общей цели.',
+      imageUrl: '/projects/journal/09.png',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/journal',
+    },
+    {
       title: 'Телегарам-бот для агентства недвижимости',
       description:
         'Мини-приложение для аренды недвижимости, связь с риелтором и помощь в оформлении сделки.',
@@ -50,6 +58,14 @@ export default function ProjectsPage() {
       imageUrl: '/projects/upgrade/02.png',
       ctaVariant: 'arrow' as const,
       href: '/projects/upgrade',
+    },
+    {
+      title: 'Сайт для логистической компании',
+      description:
+        'Сайт для логистической компании',
+      imageUrl: '/projects/FDR/07.png',
+      ctaVariant: 'arrow' as const,
+      href: '/projects/warehouse',
     },
     {
       title: 'Корпоративный сайт застройщика жилых комплексов',

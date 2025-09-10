@@ -58,7 +58,7 @@ const ProjectOverview: FC<ProjectOverviewProps> = ({
                 {eyebrow && (
                   <p className={`text-base/7 font-semibold ${eyebrowColor}`}>{eyebrow}</p>
                 )}
-                <SectionHeading id={headingId} as="h1" size="lg" align="left" className={`mt-2 text-pretty ${titleColor}`}>
+                <SectionHeading id={headingId} as="h2" size="lg" align="left" className={`mt-2 text-pretty ${titleColor}`}>
                   {title}
                 </SectionHeading>
                 {intro && (
