@@ -1,5 +1,5 @@
-# Multi-stage Dockerfile for Next.js (App Router)
-# Build with: docker build -t ghcr.io/bywebdad/english-brest.by .
+# Multi-stage Dockerfile for Next.js (App Router) with nginx compression
+# Build with: docker build -t ghcr.io/bywebdad/site-webdad .
 
 FROM node:20-alpine AS deps
 WORKDIR /app
@@ -10,17 +10,38 @@ RUN npm ci
 FROM node:20-alpine AS builder
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# Build with optimizations enabled
 RUN npm run build
+
+FROM nginx:alpine AS nginx-stage
+# Install brotli module for nginx
+RUN apk add --no-cache nginx-mod-http-brotli
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# Install nginx for serving static files with compression
+RUN apk add --no-cache nginx nginx-mod-http-brotli
+
+# Copy nginx configuration
+COPY --from=nginx-stage /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+
 # Standalone runtime (configured via output: 'standalone' in next.config)
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
-EXPOSE 3000
-CMD ["node","server.js"]
+
+# Create startup script
+RUN echo '#!/bin/sh' > /app/start.sh && \
+    echo 'nginx &' >> /app/start.sh && \
+    echo 'node server.js' >> /app/start.sh && \
+    chmod +x /app/start.sh
+
+EXPOSE 80 3000
+CMD ["/app/start.sh"]

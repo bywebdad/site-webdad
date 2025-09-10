@@ -5,9 +5,9 @@ import FooterColumn, { type FooterLinkItem } from '@molecules/FooterColumn';
 
 const footerCompany: FooterLinkItem[] = [
   { label: 'О компании', href: '/company' },
-  { label: 'Услуги', href: '/services' },
+  // { label: 'Услуги', href: '/services' },
   { label: 'Проекты', href: '/projects' },
-  { label: 'Карьера', href: '/careers' },
+  // { label: 'Карьера', href: '/careers' },
   { label: 'Блог', href: '/blog' },
 ];
 
