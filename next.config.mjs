@@ -22,7 +22,17 @@ try {
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
-  webpack: (config) => {
+  
+  // Включаем сжатие для production
+  compress: true,
+  
+  // Экспериментальные функции для оптимизации
+  experimental: {
+    optimizePackageImports: ['@headlessui/react', '@heroicons/react'],
+  },
+  
+  webpack: (config, { dev, isServer }) => {
+    // Настройка алиасов
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
@@ -34,6 +44,20 @@ const nextConfig = {
       '@app': path.resolve(process.cwd(), 'src/app'),
       '@features': path.resolve(process.cwd(), 'src/components/features'),
     };
+
+    // Оптимизация для production
+    if (!dev && !isServer) {
+      // Включаем tree shaking
+      config.optimization = {
+        ...config.optimization,
+        usedExports: true,
+        sideEffects: false,
+      };
+      
+      // Настройка минификации
+      config.optimization.minimizer = config.optimization.minimizer || [];
+    }
+    
     return config;
   },
   images: {
