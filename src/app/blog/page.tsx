@@ -6,8 +6,25 @@ import Blog from '@templates/Blog';
 import BlogFilters from '@molecules/BlogFilters';
 
 export const metadata: Metadata = {
-  title: 'Блог — WEBDAD',
-  description: 'Статьи, практики и новости компании NewSite.',
+  title: 'Блог компании от команды WEBDAD',
+  description: 'Статьи о веб-разработке, IT-технологиях и лучших практиках разработки от команды WEBDAD.',
+  openGraph: {
+    title: 'Блог компании от команды WEBDAD',
+    description: 'Статьи о веб-разработке, IT-технологиях и лучших практиках разработки от команды WEBDAD.',
+    type: 'website',
+    images: [{
+      url: '/og-blog.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Блог WEBDAD - статьи о веб-разработке',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Блог компании от команды WEBDAD',
+    description: 'Статьи о веб-разработке, IT-технологиях и лучших практиках разработки от команды WEBDAD.',
+    images: ['/og-blog.jpg'],
+  },
 };
 
 export default async function BlogPage({ searchParams }: { searchParams?: Promise<{ tag?: string; author?: string }> }) {
