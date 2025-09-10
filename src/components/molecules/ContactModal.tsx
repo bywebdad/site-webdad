@@ -94,11 +94,11 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       />
       
       {/* Modal */}
-      <div className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className="relative  bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Оставить заявку
+        <div className="flex items-center text-white justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-brand-500 to-brand-600 dark:from-jungle-500 dark:to-jungle-600">
+          <h2 className="text-xl font-semibold">
+            Готовы к сотрудничеству!
           </h2>
           <button
             onClick={onClose}

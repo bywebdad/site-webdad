@@ -26,6 +26,11 @@ const nextConfig = {
   // Включаем сжатие для production
   compress: true,
   
+  // Настройка для современных браузеров (убираем полифилы)
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
   // Экспериментальные функции для оптимизации
   experimental: {
     optimizePackageImports: ['@headlessui/react', '@heroicons/react'],
@@ -56,6 +61,12 @@ const nextConfig = {
       
       // Настройка минификации
       config.optimization.minimizer = config.optimization.minimizer || [];
+      
+      // Настройка для современных браузеров - убираем полифилы
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'core-js/modules': false,
+      };
     }
     
     return config;

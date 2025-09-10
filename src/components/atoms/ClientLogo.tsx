@@ -1,20 +1,30 @@
-import type { FC, ImgHTMLAttributes } from 'react';
+import Image from 'next/image';
+import type { FC } from 'react';
 
-export type ClientLogoProps = ImgHTMLAttributes<HTMLImageElement> & {
+export type ClientLogoProps = {
   alt: string;
   src: string;
   className?: string;
+  width?: number;
+  height?: number;
 };
 
-const ClientLogo: FC<ClientLogoProps> = ({ alt, src, className = '', ...rest }) => {
+const ClientLogo: FC<ClientLogoProps> = ({ 
+  alt, 
+  src, 
+  className = '', 
+  width = 158, 
+  height = 48 
+}) => {
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
-      width={rest.width ?? 158}
-      height={rest.height ?? 48}
+      width={width}
+      height={height}
       className={`max-h-12 w-full object-contain ${className} dark:brightness-0 dark:invert`}
-      {...rest}
+      sizes="(min-width: 1024px) 158px, (min-width: 640px) 120px, 100px"
+      priority={false}
     />
   );
 };
