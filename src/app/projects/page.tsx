@@ -7,6 +7,23 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Проекты | WEBDAD',
   description: 'Наши реализованные проекты и кейсы: веб‑разработка, автоматизация и современные цифровые решения.',
+  openGraph: {
+    title: 'Проекты | WEBDAD',
+    description: 'Наши реализованные проекты и кейсы: веб‑разработка, автоматизация и современные цифровые решения.',
+    type: 'website',
+    images: [{
+      url: '/og-projects.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Проекты WEBDAD - веб-разработка и автоматизация',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Проекты | WEBDAD',
+    description: 'Наши реализованные проекты и кейсы: веб‑разработка, автоматизация и современные цифровые решения.',
+    images: ['/og-projects.jpg'],
+  },
 };
 
 export default function ProjectsPage() {

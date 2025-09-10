@@ -9,9 +9,25 @@ import Clients from '@templates/Clients';
 import ServiceShowcase from '@templates/ServiceShowcase';
 
 export const metadata: Metadata = {
-  title: 'AI и аналитика — NewSite',
-  description:
-    'Внедряем ML и Big Data для бизнес‑эффекта и автоматизации: от аудита данных и построения пайплайнов до моделей, BI‑дашбордов и MLOps.',
+  title: 'AI и аналитика — WEBDAD',
+  description: 'Машинное обучение, предсказательная аналитика, автоматизация процессов с помощью искусственного интеллекта от команды WEBDAD.',
+  openGraph: {
+    title: 'AI и аналитика — WEBDAD',
+    description: 'Машинное обучение, предсказательная аналитика, автоматизация процессов с помощью искусственного интеллекта от команды WEBDAD.',
+    type: 'website',
+    images: [{
+      url: '/og-ai-analytics.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'AI и аналитика от WEBDAD - машинное обучение и предсказательная аналитика',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI и аналитика — WEBDAD',
+    description: 'Машинное обучение, предсказательная аналитика, автоматизация процессов с помощью искусственного интеллекта от команды WEBDAD.',
+    images: ['/og-ai-analytics.jpg'],
+  },
 };
 
 export default function ServiceAiAnalyticsPage() {

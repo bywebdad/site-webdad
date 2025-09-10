@@ -9,8 +9,25 @@ import Clients from '@templates/Clients';
 import ServiceShowcase from '@templates/ServiceShowcase';
 
 export const metadata: Metadata = {
-  title: 'Разработка ПО — NewSite',
-  description: 'Разработка веб-приложений на заказ: проектирование, дизайн, фронтенд, бэкенд, QA и поддержка.',
+  title: 'Разработка ПО — WEBDAD',
+  description: 'Разработка веб-приложений на заказ: проектирование, дизайн, фронтенд, бэкенд, QA и поддержка от команды WEBDAD.',
+  openGraph: {
+    title: 'Разработка ПО — WEBDAD',
+    description: 'Разработка веб-приложений на заказ: проектирование, дизайн, фронтенд, бэкенд, QA и поддержка от команды WEBDAD.',
+    type: 'website',
+    images: [{
+      url: '/og-development.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Разработка ПО от WEBDAD - веб-приложения на заказ',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Разработка ПО — WEBDAD',
+    description: 'Разработка веб-приложений на заказ: проектирование, дизайн, фронтенд, бэкенд, QA и поддержка от команды WEBDAD.',
+    images: ['/og-development.jpg'],
+  },
 };
 
 export default function ServiceDevelopmentPage() {

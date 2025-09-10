@@ -5,8 +5,32 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').re
 
 export const metadata: Metadata = {
   title: 'IT-компания WEBDAD разработка веб-приложений',
-  description: 'Мы специализируемся на комплексных ИТ-решениях, включая разработку сайтов MPA, PWA и ботов для компаний, стремящихся повысить свое присутствие в цифровом пространстве.',
+  description: 'Мы специализируемся на комплексных ИТ-решениях, включая разработку сайтов, MPA, PWA, ПО, CRM, IA',
   metadataBase: new URL(siteUrl),
+  openGraph: {
+    type: 'website',
+    locale: 'ru_RU',
+    url: siteUrl,
+    title: 'IT-компания WEBDAD разработка веб-приложений',
+    description: 'Мы специализируемся на комплексных ИТ-решениях, включая разработку сайтов, MPA, PWA, ПО, CRM, IA',
+    siteName: 'WEBDAD',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'WEBDAD - IT-компания разработка веб-приложений',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IT-компания WEBDAD разработка веб-приложений',
+    description: 'Мы специализируемся на комплексных ИТ-решениях, включая разработку сайтов, MPA, PWA, ПО, CRM, IA',
+    images: ['/og-image.jpg'],
+    creator: '@webdad_dev',
+    site: '@webdad_dev',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
@@ -26,6 +50,20 @@ export const metadata: Metadata = {
     { media: '(prefers-color-scheme: dark)', color: '#111827' }
   ],
   viewport: 'width=device-width, initial-scale=1',
+  alternates: {
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

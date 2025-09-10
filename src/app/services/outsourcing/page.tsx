@@ -9,8 +9,25 @@ import Clients from '@templates/Clients';
 import ServiceShowcase from '@templates/ServiceShowcase';
 
 export const metadata: Metadata = {
-  title: 'ИТ‑аутсорсинг — NewSite',
-  description: 'ИТ‑аутсорсинг: выделенные команды разработки, поддержка и развитие продукта, SLA, прозрачные процессы и гибкое масштабирование.',
+  title: 'ИТ‑аутсорсинг — WEBDAD',
+  description: 'Команда разработчиков под ключ: фронтенд, бэкенд, DevOps, дизайн. Расширение штата без найма от команды WEBDAD.',
+  openGraph: {
+    title: 'ИТ‑аутсорсинг — WEBDAD',
+    description: 'Команда разработчиков под ключ: фронтенд, бэкенд, DevOps, дизайн. Расширение штата без найма от команды WEBDAD.',
+    type: 'website',
+    images: [{
+      url: '/og-outsourcing.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'ИТ‑аутсорсинг от WEBDAD - команда разработчиков под ключ',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ИТ‑аутсорсинг — WEBDAD',
+    description: 'Команда разработчиков под ключ: фронтенд, бэкенд, DevOps, дизайн. Расширение штата без найма от команды WEBDAD.',
+    images: ['/og-outsourcing.jpg'],
+  },
 };
 
 export default function ServiceOutsourcingPage() {

@@ -11,6 +11,23 @@ import FAQ from '@organisms/FAQ';
 export const metadata: Metadata = {
   title: 'О компании WEBDAD – Инновации и качество в IT-решениях',
   description: 'Мы WEBDAD, амбициозная ИТ-компания, наша миссия — помочь предприятиям автоматизировать рутинные процессы. Мы работаем с людьми, у которых есть цель.',
+  openGraph: {
+    title: 'О компании WEBDAD – Инновации и качество в IT-решениях',
+    description: 'Мы WEBDAD, амбициозная ИТ-компания, наша миссия — помочь предприятиям автоматизировать рутинные процессы. Мы работаем с людьми, у которых есть цель.',
+    type: 'website',
+    images: [{
+      url: '/og-company.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'О компании WEBDAD - инновации и качество в IT-решениях',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'О компании WEBDAD – Инновации и качество в IT-решениях',
+    description: 'Мы WEBDAD, амбициозная ИТ-компания, наша миссия — помочь предприятиям автоматизировать рутинные процессы. Мы работаем с людьми, у которых есть цель.',
+    images: ['/og-company.jpg'],
+  },
 };
 
 export default function CompanyPage() {

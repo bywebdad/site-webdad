@@ -9,9 +9,25 @@ import Clients from '@templates/Clients';
 import ServiceShowcase from '@templates/ServiceShowcase';
 
 export const metadata: Metadata = {
-  title: 'ИТ‑консалтинг — NewSite',
-  description:
-    'ИТ‑консалтинг: аудит и стратегия продукта, архитектурный анализ, выбор технологий, улучшение процессов и метрик, дорожная карта внедрения.',
+  title: 'ИТ‑консалтинг — WEBDAD',
+  description: 'Аудит архитектуры, выбор технологий, планирование разработки. Консультации по цифровой трансформации и оптимизации процессов от команды WEBDAD.',
+  openGraph: {
+    title: 'ИТ‑консалтинг — WEBDAD',
+    description: 'Аудит архитектуры, выбор технологий, планирование разработки. Консультации по цифровой трансформации и оптимизации процессов от команды WEBDAD.',
+    type: 'website',
+    images: [{
+      url: '/og-consulting.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'ИТ‑консалтинг от WEBDAD - аудит архитектуры и планирование разработки',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ИТ‑консалтинг — WEBDAD',
+    description: 'Аудит архитектуры, выбор технологий, планирование разработки. Консультации по цифровой трансформации и оптимизации процессов от команды WEBDAD.',
+    images: ['/og-consulting.jpg'],
+  },
 };
 
 export default function ServiceConsultingPage() {
