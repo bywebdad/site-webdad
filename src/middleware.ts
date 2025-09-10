@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
+  // Редирект с www на без www для избежания дублированного контента
+  const url = request.nextUrl.clone();
+  const hostname = request.headers.get('host') || '';
+  
+  if (hostname.startsWith('www.')) {
+    url.hostname = hostname.replace('www.', '');
+    return NextResponse.redirect(url, 301);
+  }
+
   const response = NextResponse.next();
 
   // Добавляем заголовки для сжатия статических ресурсов
