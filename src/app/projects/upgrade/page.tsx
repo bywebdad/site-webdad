@@ -50,6 +50,7 @@ export default function UpgradePage() {
                 'Индивидуальные треки, закрытые группы, интеграция с внутренними процессами',
               tags: ['Стек', 'Технологии', 'Культура', 'Принципы работы'],
               imageSrc: '/projects/upgrade/05.png',
+              imageAlt: 'Скриншот интерфейса образовательной платформы',
               imageFit: 'cover',
               colSpanMd: 1,
             },
@@ -59,6 +60,7 @@ export default function UpgradePage() {
                  'Обучение построено вокруг реальных задач из жизни нашей IT-компании. С гибким графиком и возможностью выбора направления.',
               tags: ['Hello World', 'Git', 'React', 'TypeScript', 'TailwindCSS'],
               imageSrc: '/projects/upgrade/04.png',
+              imageAlt: 'Скриншот интерфейса образовательной платформы',
               imageFit: 'cover',
               colSpanMd: 1,
             },
@@ -68,6 +70,7 @@ export default function UpgradePage() {
                 'Удобная панель управления для отслеживания прогресса студентов: выполненные задания, активность, статус ревью, сильные и слабые стороны.',
               tags: ['HR', 'Поддержка', 'Аналитика'],
               imageSrc: '/projects/upgrade/06.png',
+              imageAlt: 'Скриншот интерфейса образовательной платформы',
               imageFit: 'contain',
               colSpanMd: 1,
             }
@@ -95,6 +98,7 @@ export default function UpgradePage() {
         eyebrow="Ещё по проекту"
         title="Статьи как мы реализовали проект для агентства недвижимости"
         subtitle="Заметки об интеграциях с CRM и автоматизацией подбора объектов для клиентов."
+        filterByTag="upgrade"
       />  
 
         <section className="py-16">

@@ -1,34 +1,114 @@
 import type { MetadataRoute } from 'next';
+import { getAllProjects, type Project } from '../lib/projects';
+import { getAllPosts, type Post } from '../lib/posts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Динамический импорт и устойчивость к ошибкам CMS на этапе билда
-  let posts: Array<any> = [];
-  let settings: any = null;
-  try {
-    const cms = await import('@lib/cms/payload');
-    const [p, s] = await Promise.all([cms.getAllPosts(), cms.getSiteSettings()]);
-    posts = Array.isArray(p) ? p : [];
-    settings = s ?? null;
-  } catch (err) {
-    // Фолбэк: без падения сборки возвращаем только статические маршруты
-    posts = [];
-    settings = null;
-  }
+  const projects = getAllProjects();
+  const posts = getAllPosts();
+  
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dev.webdad.by').replace(/\/$/, '');
 
-  const base = (settings?.domain?.replace(/\/$/, '') || process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://example.com');
-
+  // Статические страницы
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${base}/`, lastModified: new Date() },
-    { url: `${base}/blog`, lastModified: new Date() },
-    { url: `${base}/company`, lastModified: new Date() },
+    {
+      url: `${siteUrl}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${siteUrl}/company`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/agile`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    // Услуги
+    {
+      url: `${siteUrl}/services/development`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/services/outsourcing`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/services/consulting`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/services/ai-analytics`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ];
 
-  const postRoutes: MetadataRoute.Sitemap = posts
-    .filter((p) => Boolean(p?.slug))
-    .map((p) => ({
-      url: `${base}/blog/${p.slug}`,
-      lastModified: p?.publishedAt ? new Date(p.publishedAt) : (p?.date ? new Date(p.date) : new Date()),
-    }));
+  // Статические проекты
+  const staticProjects = [
+    'addseller',
+    'addwine', 
+    'amatar',
+    'geomarketing',
+    'journal',
+    'miniapp-coffee',
+    'real-estate-analytics',
+    'realt-estate-miniapp',
+    'sophienwald',
+    'upgrade',
+    'warehouse'
+  ];
 
-  return [...staticRoutes, ...postRoutes];
+  const staticProjectRoutes: MetadataRoute.Sitemap = staticProjects.map(slug => ({
+    url: `${siteUrl}/projects/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  // Динамические проекты из projects.ts
+  const dynamicProjectRoutes: MetadataRoute.Sitemap = projects.map((project: Project) => ({
+    url: `${siteUrl}/projects/${project.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  // Посты блога
+  const postRoutes: MetadataRoute.Sitemap = posts.map((post: Post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...staticProjectRoutes,
+    ...dynamicProjectRoutes,
+    ...postRoutes,
+  ];
 }

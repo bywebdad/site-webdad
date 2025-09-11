@@ -38,6 +38,7 @@ export default function WarehousePage() {
                 'Создан современный, минималистичный дизайн, передающий ценности логистики: надёжность, точность, движение. Уделён особый акцент визуальной иерархии и восприятию бренда. ',
               tags: ['UI/UX', 'Responsive'],
               imageSrc: '/projects/FDR/02.png',
+              imageAlt: 'Скриншот интерфейса логистической компании',
               imageFit: 'contain',
             },
             {
@@ -46,6 +47,7 @@ export default function WarehousePage() {
                 'Переписан и систематизирован контент: услуги представлены в понятном формате с акцентом на выгоды для бизнеса. Добавлены описания процессов, кейсы и технические детали, повышающие доверие. ',
               tags: ['Navigation', 'UX'],
               imageSrc: '/projects/FDR/03.png',
+              imageAlt: 'Скриншот интерфейса логистической компании',
               imageFit: 'contain',
             },
             {
@@ -54,6 +56,7 @@ export default function WarehousePage() {
                 'Интерактивный калькулятор позволяет клиентам самостоятельно рассчитать стоимость логистических услуг в режиме реального времени.',
               tags: ['Calculator', 'Interactive'],
               imageSrc: '/projects/FDR/06.png',
+              imageAlt: 'Скриншот интерфейса логистической компании',
               imageFit: 'contain',
             },
             {
@@ -62,6 +65,7 @@ export default function WarehousePage() {
                 'Настроены HTTPS, кэширование, защита от спама и DDoS. Сайт соответствует современным стандартам безопасности и производительности. ',
               tags: ['Mobile', 'Responsive', 'Adaptive'],
               imageSrc: '/projects/FDR/05.png',
+              imageAlt: 'Скриншот интерфейса логистической компании',
               imageFit: 'contain',
               colSpanMd: 2,
             },
@@ -70,6 +74,7 @@ export default function WarehousePage() {
               description: 'Проведён аудит семантики, настроена техническая оптимизация (скорость, индексация, микроразметка), реализована стратегия контентного SEO. Результат: рост органического трафика более чем на 140%.',
               tags: ['Forms', 'CRM'],
               imageSrc: '/projects/FDR/04.png',
+              imageAlt: 'Скриншот интерфейса логистической компании',
               imageFit: 'contain',
               colSpanMd: 1,
             },

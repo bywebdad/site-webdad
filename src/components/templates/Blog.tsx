@@ -6,6 +6,7 @@ export type BlogProps = {
   subtitle?: string;
   posts?: BlogCardProps[];
   limit?: number;
+  filterByTag?: string;
 };
 
 const Blog = async ({
@@ -14,10 +15,12 @@ const Blog = async ({
   subtitle = 'Узнавайте, как развивать бизнес с помощью технологий.',
   posts,
   limit = 6,
+  filterByTag,
 }: BlogProps) => {
   let items: BlogCardProps[] = posts ?? [];
   if (!items || items.length === 0) {
     try {
+      // Пытаемся загрузить из CMS
       const { getAllPosts } = await import('@lib/cms/payload');
       const data = await getAllPosts({ page: 1, limit });
       items = data.map((p: any) => ({
@@ -29,7 +32,29 @@ const Blog = async ({
         author: p.author ? { name: p.author.name, avatarSrc: p.author.avatarSrc } : undefined,
       }));
     } catch {
-      items = [];
+      // Фолбэк на локальные посты
+      try {
+        const { getAllPosts } = await import('../../lib/posts');
+        let allPosts = getAllPosts();
+        
+        // Фильтрация по тэгу если указан
+        if (filterByTag) {
+          allPosts = allPosts.filter((post: any) => 
+            post.tags && post.tags.includes(filterByTag)
+          );
+        }
+        
+        items = allPosts.slice(0, limit).map((p: any) => ({
+          title: p.title,
+          href: `/blog/${p.slug}`,
+          imageSrc: p.coverSrc ?? '/blog/01.png',
+          imageAlt: p.coverAlt ?? p.title,
+          date: p.date,
+          author: p.author ? { name: p.author.name, avatarSrc: p.author.avatarSrc } : undefined,
+        }));
+      } catch {
+        items = [];
+      }
     }
   }
 
