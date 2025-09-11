@@ -41,7 +41,7 @@ const defaultItems: CaseItem[] = [
     title: 'Система геовизуализации',
     description:
       'Единая карта домохозяйств и конкурентов, слои, зоны охвата, прогноз товарооборота и аналитика.',
-    imageUrl: '/projects/geomarketing/09.png',
+    imageUrl: '/projects/geomarketing/09.webp',
     href: '/projects/geomarketing',
     ctaVariant: 'arrow',
   },
@@ -50,7 +50,7 @@ const defaultItems: CaseItem[] = [
     title: 'Telegram‑миниапп для агентства недвижимости',
     description:
       'Подбор объектов, уведомления, интеграция с CRM, мобильный UX и быстрая фильтрация.',
-    imageUrl: '/projects/GRE/01.png',
+    imageUrl: '/projects/GRE/01.webp',
     href: '/projects/realt-estate-miniapp',
     ctaVariant: 'arrow',
   },

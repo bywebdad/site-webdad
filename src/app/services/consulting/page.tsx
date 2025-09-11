@@ -88,7 +88,7 @@ export default function ServiceConsultingPage() {
           eyebrow="ИТ‑консалтинг"
           title={"Примем ключевые решения\nбыстро и обоснованно"}
           subtitle="Дадим независимую оценку текущего состояния и предложим путь к целевому: от архитектуры до процессов и метрик."
-          imageSrc="/brand/01.png"
+          imageSrc="/brand/01.webp"
           imageAlt="ИТ‑консалтинг: аудит и стратегия"
           ctaHref="/company"
           pillLabel="Аудит"

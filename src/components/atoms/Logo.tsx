@@ -16,7 +16,7 @@ const Logo: React.FC<LogoProps> = ({
   alt = 'Логотип',
   label = 'WEBDAD',
   showLabel = true,
-  srcLight = '/brand/Logo.png',
+  srcLight = '/brand/Logo.webp',
   srcDark,
   width = 32,
   height = 32,

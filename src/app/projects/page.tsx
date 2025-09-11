@@ -40,7 +40,7 @@ export default function ProjectsPage() {
       title: 'Телегарам-бот для агентства недвижимости',
       description:
         'Мини-приложение для аренды недвижимости, связь с риелтором и помощь в оформлении сделки.',
-      imageUrl: '/projects/GRE/01.png',
+      imageUrl: '/projects/GRE/01.webp',
       ctaVariant: 'arrow' as const,
       href: '/projects/realt-estate-miniapp',
     },
@@ -96,7 +96,7 @@ export default function ProjectsPage() {
       title: 'Система геовизуализации от идеи до промышленного решения',
       description:
         'Система геовизуализации для анализа и визуализации данных на карте.',
-      imageUrl: '/projects/geomarketing/09.png',
+      imageUrl: '/projects/geomarketing/09.webp',
       ctaVariant: 'arrow' as const,
       href: '/projects/geomarketing',
     },
