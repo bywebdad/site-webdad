@@ -27,6 +27,21 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  // Оптимизация кэширования для изображений и других ресурсов
+  if (request.nextUrl.pathname.match(/\.(jpg|jpeg|png|webp|avif|gif|svg|ico|woff|woff2|ttf|eot)$/)) {
+    response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+  }
+
+  // Добавляем заголовки для улучшения производительности
+  response.headers.set('X-DNS-Prefetch-Control', 'on');
+  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  response.headers.set('X-Robots-Tag', 'index, follow');
+  
+  // Preload критически важных ресурсов
+  if (request.nextUrl.pathname === '/') {
+    response.headers.set('Link', '</brand/Logo.webp>; rel=preload; as=image, </brand/01.webp>; rel=preload; as=image');
+  }
+
   // Добавляем заголовки безопасности и производительности
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('X-Frame-Options', 'DENY');

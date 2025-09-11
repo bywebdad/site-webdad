@@ -36,6 +36,10 @@ const nextConfig = {
     optimizePackageImports: ['@headlessui/react', '@heroicons/react'],
   },
   
+  // Настройки для улучшения производительности
+  poweredByHeader: false,
+  generateEtags: false,
+  
   webpack: (config, { dev, isServer }) => {
     // Настройка алиасов
     config.resolve = config.resolve || {};
@@ -57,6 +61,17 @@ const nextConfig = {
         ...config.optimization,
         usedExports: true,
         sideEffects: false,
+        // Разделение кода для лучшего кэширования
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+            },
+          },
+        },
       };
       
       // Настройка минификации
@@ -69,9 +84,22 @@ const nextConfig = {
       };
     }
     
+    // Оптимизация для всех сборок
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
+    
     return config;
   },
   images: {
+    // Форматы изображений для оптимизации
+    formats: ['image/webp', 'image/avif'],
+    // Размеры для responsive изображений
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     domains: ['images.unsplash.com', 's3.amazonaws.com']
       .concat(s3Host ? [s3Host] : [])
       .concat(cmsHost ? [cmsHost] : []),

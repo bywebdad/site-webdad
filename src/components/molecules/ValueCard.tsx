@@ -12,14 +12,28 @@ export type ValueCardProps = {
 const ValueCard: FC<ValueCardProps> = ({ title, description, className = '', ...rest }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: -9999, y: -9999 });
+  const [dimensions, setDimensions] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
+
+  // Кэшируем размеры элемента для избежания повторных вызовов getBoundingClientRect
+  const updateDimensions = () => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    setDimensions({ width: rect.width, height: rect.height });
+  };
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setPos({ x, y });
+    
+    // Используем offsetLeft/offsetTop вместо getBoundingClientRect для лучшей производительности
+    const x = e.nativeEvent.offsetX;
+    const y = e.nativeEvent.offsetY;
+    
+    // Throttle обновления позиции для производительности
+    requestAnimationFrame(() => {
+      setPos({ x, y });
+    });
   };
 
   const handleMouseLeave = () => {
@@ -27,10 +41,11 @@ const ValueCard: FC<ValueCardProps> = ({ title, description, className = '', ...
   };
 
   const handleFocus = () => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    setPos({ x: rect.width / 2, y: rect.height / 2 });
+    // Используем кэшированные размеры вместо повторного getBoundingClientRect
+    if (dimensions.width === 0) {
+      updateDimensions();
+    }
+    setPos({ x: dimensions.width / 2, y: dimensions.height / 2 });
   };
 
   const handleBlur = () => {
