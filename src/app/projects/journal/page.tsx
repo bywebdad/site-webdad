@@ -47,6 +47,7 @@ export default function JournalPage() {
                 'Управляйте работой вашей команды эффективно. Создавайте задачи, назначайте исполнителей и отслеживайте результаты в реальном времени',
               tags: ['Interactive', 'Animations'],
               imageSrc: '/projects/journal/03.png',
+              imageAlt: 'Скриншот интерфейса Journal',
               imageFit: 'contain',
             },
             {
@@ -55,6 +56,7 @@ export default function JournalPage() {
                 'Journal помогает выстроить чёткую структуру: каждый сотрудник понимает свою зону ответственности и приоритеты.',
               tags: ['History', 'Branching'],
               imageSrc: '/projects/journal/06.png',
+              imageAlt: 'Скриншот интерфейса Journal',
               imageFit: 'contain',
             },
             {
@@ -63,6 +65,7 @@ export default function JournalPage() {
                 'Чек-листы и регулярные обновления исключают путаницу и срывы сроков.',
               tags: ['Library', 'Variants'],
               imageSrc: '/projects/journal/02.png',
+              imageAlt: 'Скриншот интерфейса Journal',
               imageFit: 'contain',
             },
             {
@@ -71,6 +74,7 @@ export default function JournalPage() {
                 'Journal отслеживает выполнение задач, выявляет узкие места и задержки в работе. Руководитель получает данные в удобной форме и может оперативно влиять на результат.',
               tags: ['Live Editing', 'Comments', 'Presence'],
               imageSrc: '/projects/journal/04.png',
+              imageAlt: 'Скриншот интерфейса Journal',
               imageFit: 'contain',
               colSpanMd: 2,
             },
@@ -79,6 +83,7 @@ export default function JournalPage() {
               description: 'Платформа укрепляет командную дисциплину: каждый участник видит общий прогресс и вклад коллег. Это повышает мотивацию, ускоряет согласование и создаёт атмосферу доверия.',
               tags: ['Tokens', 'Styles'],
               imageSrc: '/projects/journal/07.png',
+              imageAlt: 'Скриншот интерфейса Journal',
               imageFit: 'contain',
               colSpanMd: 1,
             },

@@ -54,6 +54,7 @@ export default function MiniappCoffeePage() {
                 'Track design changes with full version history. Compare versions and restore previous iterations.',
               tags: ['History', 'Branching'],
               imageSrc: '/projects/miniapp-coffee/2.png',
+              imageAlt: 'Скриншот интерфейса Miniapp Coffee',
             },
             {
               title: 'Новейшие технологии',
