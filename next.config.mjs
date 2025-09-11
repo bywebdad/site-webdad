@@ -40,6 +40,34 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
   
+  // Оптимизация заголовков
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains'
+          }
+        ],
+      },
+      {
+        source: '/(.*)\\.(js|css|woff|woff2|ttf|eot)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+  
   webpack: (config, { dev, isServer }) => {
     // Настройка алиасов
     config.resolve = config.resolve || {};
@@ -97,9 +125,13 @@ const nextConfig = {
   images: {
     // Форматы изображений для оптимизации
     formats: ['image/webp', 'image/avif'],
-    // Размеры для responsive изображений
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Размеры для responsive изображений - оптимизированные под реальное использование
+    deviceSizes: [320, 420, 640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 466, 640],
+    // Минимизируем качество для не критических изображений
+    minimumCacheTTL: 31536000, // 1 год
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: ['images.unsplash.com', 's3.amazonaws.com']
       .concat(s3Host ? [s3Host] : [])
       .concat(cmsHost ? [cmsHost] : []),

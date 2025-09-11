@@ -12,16 +12,26 @@ import ArtUIComponents from '@features/projects/atoms/ArtUIComponents';
 import ArtCollaboration from '@features/projects/atoms/ArtCollaboration';
 import ArtDesignSystem from '@features/projects/atoms/ArtDesignSystem';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://webdad.by';
+
 export const metadata: Metadata = {
   title: 'Сервис для оптовых заказов и специальных поставок винных аксессуаров',
   description:
     'Каждый бокал заслуживает не только великолепного вина — но и достойного представления',
+  alternates: {
+    canonical: `${siteUrl}/projects/addseller`,
+  },
   openGraph: {
     title: 'Сервис для оптовых заказов и специальных поставок винных аксессуаров',
     description:
       'Каждый бокал заслуживает не только великолепного вина — но и достойного представления',
+    url: `${siteUrl}/projects/addseller`,
     images: [{ url: '/projects/addseller/01.png' }],
     type: 'article',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -47,6 +57,7 @@ export default function AddSellerPage() {
                 'Для удобства дилеров создан и продуман личный кабинет для каждого пользователя. В нем подключен такой функционал, как: просмотр новостей, создание различных адресов доставки и т.д.',
               tags: ['Interactive', 'Animations'],
               imageSrc: '/projects/addseller/02.png',
+              imageAlt: 'Скриншот интерфейса AddSeller',
               imageFit: 'contain',
               colSpanMd: 1,
             },
@@ -65,6 +76,7 @@ export default function AddSellerPage() {
                 'В личном кабинете есть возможность генерации документов. При нажатии на кнопку у пользователя генерируется документ, в котором отражается наличие определенных товаров на сайте. Данные документы можно выгрузить в формате Excel для интеграции в собственную систему дилера, либо в формате XML, любой из этих документов возможно распечатать.',
               tags: ['Library', 'Variants'],
               imageSrc: '/projects/addseller/04.png',
+              imageAlt: 'Скриншот интерфейса AddSeller',
               imageFit: 'contain',
               colSpanMd: 1,
             },
@@ -74,6 +86,7 @@ export default function AddSellerPage() {
                 'По исследованиям около 77% клиентов не готовы совершить покупку через сайт, если в нём нет чата с консультантом. Чат на сайте стал основным каналом поддержки клиентов.',
               tags: ['Live Editing', 'Comments', 'Presence'],
               imageSrc: '/projects/addseller/03.png',
+              imageAlt: 'Скриншот интерфейса AddSeller',
               imageFit: 'contain',
               colSpanMd: 1,
             },
