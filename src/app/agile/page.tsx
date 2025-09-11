@@ -31,7 +31,7 @@ export default function AgilePage() {
           id="agile-principles"
           title="Принципы Agile в нашей работе"
           subtitle="Как мы применяем гибкую методологию для достижения максимального результата"
-          imageSrc="/brand/01.png"
+          imageSrc="/brand/01.webp"
           imageAlt="Agile принципы"
           variant="rect"
           hideDecorations
@@ -96,7 +96,7 @@ export default function AgilePage() {
           id="agile-process"
           title="Как проходит Agile-проект"
           subtitle="Пошаговый процесс от идеи до готового продукта"
-          imageSrc="/brand/01.png"
+          imageSrc="/brand/01.webp"
           imageAlt="Процесс Agile-разработки"
           variant="blob"
           pillLabel="2-4 недели"
@@ -197,7 +197,7 @@ export default function AgilePage() {
             href: '#',
             label: 'Оставить заявку'
           }}
-          imageSrc="/brand/01.png"
+          imageSrc="/brand/01.webp"
           imageAlt="Начать Agile-проект"
         />
       </main>

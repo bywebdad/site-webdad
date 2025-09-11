@@ -88,7 +88,7 @@ export default function ServiceOutsourcingPage() {
           // eyebrow="ИТ‑аутсорсинг"
           title={"Усилим вашу команду\nи ускорим релизы"}
           subtitle="Подключаемся в любом статусе продукта: берём весь поток задач или закрываем дефицит ролей. Прозрачно, предсказуемо, без микроменеджмента."
-          imageSrc="/brand/01.png"
+          imageSrc="/brand/01.webp"
           imageAlt="ИТ‑аутсорсинг и выделенные команды"
           ctaHref="/company"
           pillLabel="SLA"

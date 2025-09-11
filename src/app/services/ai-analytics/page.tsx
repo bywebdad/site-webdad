@@ -88,7 +88,7 @@ export default function ServiceAiAnalyticsPage() {
           eyebrow="AI и аналитика"
           title={"От данных к решению\nза недели"}
           subtitle="Строим пайплайны данных, обучаем модели и создаём BI‑дашборды. Производственный контур и MLOps — сразу в проекте."
-          imageSrc="/brand/01.png"
+          imageSrc="/brand/01.webp"
           imageAlt="AI и аналитика: ML, Big Data, BI"
           ctaLabel="Связаться"
           ctaHref="/company"
@@ -113,7 +113,7 @@ export default function ServiceAiAnalyticsPage() {
             {
               title: 'Система геовизуализации от идеи до промышленного решения',
               description: 'Система геовизуализации для анализа и визуализации данных на карте.',
-              imageUrl: '/projects/geomarketing/09.png',
+              imageUrl: '/projects/geomarketing/09.webp',
               ctaVariant: 'arrow',
               href: '/projects/geomarketing',
             },

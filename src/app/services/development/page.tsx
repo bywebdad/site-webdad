@@ -88,7 +88,7 @@ export default function ServiceDevelopmentPage() {
           eyebrow="Наши услуги"
           title={"Сильные решения\nдля вашего продукта"}
           subtitle="Инженерим архитектуру, проектируем UX и поставляем понятными инкрементами. Гарантируем прозрачность, качество и масштабируемость."
-          imageSrc="/brand/01.png"
+          imageSrc="/brand/01.webp"
           imageAlt="Витрина кейсов и визуальный стиль"
           // ctaLabel="Подробнее"
           ctaHref="/projects"
@@ -114,7 +114,7 @@ export default function ServiceDevelopmentPage() {
             {
               title: 'Телегарам-бот для агентства недвижимости',
               description: 'Мини-приложение для аренды недвижимости, связь с риелтором и помощь в оформлении сделки.',
-              imageUrl: '/projects/GRE/01.png',
+              imageUrl: '/projects/GRE/01.webp',
               ctaVariant: 'arrow',
               href: '/projects/realt-estate-miniapp',
             },
@@ -128,7 +128,7 @@ export default function ServiceDevelopmentPage() {
             {
               title: 'Система геовизуализации от идеи до промышленного решения',
               description: 'Система геовизуализации для анализа и визуализации данных на карте.',
-              imageUrl: '/projects/geomarketing/09.png',
+              imageUrl: '/projects/geomarketing/09.webp',
               ctaVariant: 'arrow',
               href: '/projects/geomarketing',
             },

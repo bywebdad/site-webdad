@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: 'Система геовизуализации',
     description:
       'Система геовизуализации для анализа и визуализации данных на карте.',
-    images: [{ url: '/projects/geomarketing/01.png' }],
+    images: [{ url: '/projects/geomarketing/01.webp' }],
     type: 'article',
   },
 };
@@ -39,7 +39,7 @@ export default function GeomarketingPage() {
         <ProjectHero
           title="Система геовизуализации"
           subtitle="Мы объединили данные из сотен источников: кадастр, реестры, открытые API, полевые исследования. Очистили, нормализовали и привязали к геокоординатам — впервые создав комплексную карту недвижимости и домохозяйств."
-          imageSrc="/projects/geomarketing/09.png"
+          imageSrc="/projects/geomarketing/09.webp"
           imageAlt="Скриншот интерфейса системы геовизуализации"
           year={2020}
           stack={["Next.js", "TypeScript", "TailwindCSS"]}
@@ -52,7 +52,7 @@ export default function GeomarketingPage() {
               description:
                 'Реализовали масштабируемую карту с поддержкой зумирования, наложения слоёв, зон охвата и тепловых карт плотности населения.',
               tags: ['Карта', 'Система геовизуализации'],
-              imageSrc: '/projects/geomarketing/02.png',
+              imageSrc: '/projects/geomarketing/02.webp',
               imageAlt: 'Скриншот интерфейса системы геовизуализации',
               imageFit: 'cover',
               colSpanMd: 1,
@@ -62,7 +62,7 @@ export default function GeomarketingPage() {
               description:
                  'Объединили данные из сотен источников, нормализовали и привязали к геокоординатам.',
               tags: ['реестры', 'спутниковые снимки', 'полевые исследования', 'кадастр', 'API'],
-              imageSrc: '/projects/geomarketing/04.png',
+              imageSrc: '/projects/geomarketing/04.webp',
               imageAlt: 'Скриншот интерфейса системы геовизуализации',
               imageFit: 'cover',
               colSpanMd: 1,
@@ -72,7 +72,7 @@ export default function GeomarketingPage() {
               description:
                 'Добавили возможность отмечать точки конкурирующих магазинов с указанием формата, площади и примерного оборота — чтобы видеть картину целиком. ',
               tags: ['Конкуренты'],
-              imageSrc: '/projects/geomarketing/06.png',
+              imageSrc: '/projects/geomarketing/06.webp',
               imageAlt: 'Скриншот интерфейса системы геовизуализации',
               imageFit: 'contain',
               colSpanMd: 1,
@@ -82,7 +82,7 @@ export default function GeomarketingPage() {
               description:
                 'Разработали алгоритм, который на основе данных о населении, доходах, транспортной доступности и конкуренции рассчитывает потенциальную выручку для каждой локации.',
               tags: ['Custom development'],
-              imageSrc: '/projects/geomarketing/03.png',
+              imageSrc: '/projects/geomarketing/03.webp',
               imageAlt: 'Скриншот интерфейса системы геовизуализации',
               imageFit: 'contain',
               colSpanMd: 2,
@@ -91,7 +91,7 @@ export default function GeomarketingPage() {
               title: 'Аналитика и отслеживание',
               description: 'Реализована аналитика в реальном времени конверсия из просмотра в заявку, самые популярные объекты, эффективность маркетинговых кампаний и многое другое.',
               tags: ['Grafana'],
-              imageSrc: '/projects/geomarketing/07.png',
+              imageSrc: '/projects/geomarketing/07.webp',
               imageAlt: 'Скриншот интерфейса системы геовизуализации',
               imageFit: 'contain',
               colSpanMd: 1,
@@ -103,7 +103,7 @@ export default function GeomarketingPage() {
           eyebrow="Кейс"
           title="Как мы построили карту, которой не было. И зачем она нужна, чтобы открыть магазин"
           intro="Однажды к нам обратился крупный ритейлер. Не с просьбой «сделайте сайт» или «запустите рекламу». А с вопросом, от которого зависят миллионы: «Мы хотим открыть новый магазин. Но где? Где люди? Где нет конкурентов? Где они готовы тратить? И как это вообще измерить?»"
-          image={{ src: '/projects/geomarketing/08.png', alt: 'Скриншоты AddWine' }}
+          image={{ src: '/projects/geomarketing/08.webp', alt: 'Скриншоты AddWine' }}
           content={[
             'Мы привыкли к цифровым задачам. Но тут — физический мир. Улицы. Дома. Квартиры. Люди, о которых никто не вёл учёт.',
             'И перед нами встала странная, почти безумная задача: построить карту, которой не существовало. Начало: когда данных нет — их создаёшь сам У клиента не было базы квартир.',
