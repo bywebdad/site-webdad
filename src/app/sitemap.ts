@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projects = getAllProjects();
   const posts = getAllPosts();
   
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dev.webdad.by').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://webdad.by').replace(/\/$/, '');
 
   // Статические страницы
   const staticRoutes: MetadataRoute.Sitemap = [

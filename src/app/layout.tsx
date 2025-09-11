@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dev.webdad.by').replace(/\/$/, '');
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://webdad.by').replace(/\/$/, '');
 
 export const metadata: Metadata = {
   title: 'IT-компания WEBDAD разработка веб-приложений',
