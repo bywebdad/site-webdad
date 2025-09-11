@@ -32,7 +32,7 @@ const defaultItems: CaseItem[] = [
     title: 'Интернет-магазин эксклюзивных аксессуаров',
     description:
       'Мульти‑витрина, интеграции с МойСклад и AmoCRM, маркетплейсы, бонусная программа и личный кабинет.',
-    imageUrl: '/projects/addwine/01.png',
+    imageUrl: '/projects/addwine/01.webp',
     href: '/projects/addwine',
     ctaVariant: 'arrow',
   },

@@ -47,14 +47,14 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                         <img
                           alt="WEBDAD разработка сайтов"
-                          src="/blog/01.png"
+                          src="/blog/01.webp"
                           className="size-full object-cover"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt="WEBDAD разработка веб-сервисов"
-                          src="/blog/02.png"
+                          src="/blog/02.webp"
                           className="size-full object-cover"
                         />
                       </div>
@@ -64,7 +64,7 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt="WEBDAD разработка веб-сервисов"
-                          src="/blog/03.png"
+                          src="/blog/03.webp"
                           className="size-full object-cover"
                         />
                       </div>
@@ -82,7 +82,7 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt="WEBDAD разработка веб-приложений"
-                          src="/blog/04.png"
+                          src="/blog/04.webp"
                           className="size-full object-cover"
                         />
                       </div>
@@ -92,14 +92,14 @@ const BlogHero: FC<BlogHeroProps> = ({
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt="WEBDAD разработка веб-сайтов"
-                          src="/blog/05.png"
+                          src="/blog/05.webp"
                           className="size-full object-cover"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt="WEBDAD разработка ПО"
-                          src="/blog/06.png"
+                          src="/blog/06.webp"
                           className="size-full object-cover"
                         />
                       </div>

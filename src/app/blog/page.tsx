@@ -44,7 +44,7 @@ export default async function BlogPage({ searchParams }: { searchParams?: Promis
     posts = data.map((p: any) => ({
       title: p.title,
       href: `/blog/${p.slug}`,
-      imageSrc: p.coverSrc ?? '/blog/01.png',
+      imageSrc: p.coverSrc ?? '/blog/01.webp',
       imageAlt: p.coverAlt ?? p.title,
       date: p.date,
       author: p.author ? { name: p.author.name, avatarSrc: p.author.avatarSrc } : undefined,

@@ -121,7 +121,7 @@ export default function ServiceDevelopmentPage() {
             {
               title: 'Интернет-магазин эксклюзивных винных аксессуаров',
               description: 'Интернет-магазин эксклюзивных винных аксессуаров ручной работы',
-              imageUrl: '/projects/addwine/01.png',
+              imageUrl: '/projects/addwine/01.webp',
               ctaVariant: 'arrow',
               href: '/projects/addwine',
             },
