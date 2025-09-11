@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Miniapp Coffee — кейс',
     description:
       'Мини‑приложение для сети кофеен: оформление заказов, оплата, бонусы, аналитика. Выполнено на Next.js и TailwindCSS.',
-    images: [{ url: '/blog/01.png' }],
+    images: [{ url: '/projects/miniapp-coffee/01.webp' }],
     type: 'article',
   },
 };

@@ -112,7 +112,7 @@ export default function ServiceConsultingPage() {
             {
               title: 'Addwine: e‑commerce платформа',
               description: 'B2C‑магазин с удобным каталогом, фильтрами и промо‑модулями. Next.js + Headless CMS.',
-              imageUrl: '/projects/addwine/01.png',
+              imageUrl: '/projects/addwine/01.webp',
               ctaVariant: 'arrow',
               href: '/projects/addwine',
             },
