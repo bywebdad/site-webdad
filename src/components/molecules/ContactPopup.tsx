@@ -6,9 +6,10 @@ interface ContactPopupProps {
   isOpen: boolean;
   onClose: () => void;
   triggerRef?: React.RefObject<HTMLButtonElement | null>;
+  isMobile?: boolean;
 }
 
-const ContactPopup = ({ isOpen, onClose, triggerRef }: ContactPopupProps) => {
+const ContactPopup = ({ isOpen, onClose, triggerRef, isMobile = false }: ContactPopupProps) => {
   const popupRef = useRef<HTMLDivElement>(null);
 
   // Закрытие по клику вне попапа
@@ -44,7 +45,11 @@ const ContactPopup = ({ isOpen, onClose, triggerRef }: ContactPopupProps) => {
   return (
     <div 
       ref={popupRef}
-      className="absolute right-0 top-full mt-2 w-80 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden"
+      className={`${
+        isMobile 
+          ? 'fixed inset-x-4 top-1/2 -translate-y-1/2 w-auto' 
+          : 'absolute right-0 top-full mt-2 w-80'
+      } bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden`}
     >
       {/* Header */}
       <div className="bg-gradient-to-r from-brand-500 to-brand-600 dark:from-jungle-500 dark:to-jungle-600 px-6 py-4">

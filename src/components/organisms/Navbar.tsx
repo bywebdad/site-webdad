@@ -215,15 +215,22 @@ export default function Example() {
                 </a>
               </div>
               <div className="py-6">
-                <button
-                  onClick={() => {
-                    setContactPopupOpen(true);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5 w-full text-left"
-                >
-                  Контакты
-                </button>
+                <div className="relative">
+                  <button
+                    onClick={() => {
+                      setContactPopupOpen(true);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5 w-full text-left"
+                  >
+                    Контакты
+                  </button>
+                  <ContactPopup 
+                    isOpen={contactPopupOpen} 
+                    onClose={() => setContactPopupOpen(false)}
+                    isMobile={true}
+                  />
+                </div>
               </div>
             </div>
           </div>

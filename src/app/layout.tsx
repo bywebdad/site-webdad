@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dev.webdad.by').replace(/\/$/, '');
@@ -45,11 +45,6 @@ export const metadata: Metadata = {
     ]
   },
   manifest: '/site.webmanifest',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#111827' }
-  ],
-  viewport: 'width=device-width, initial-scale=1',
   alternates: {
     canonical: siteUrl,
   },
@@ -66,13 +61,19 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#111827' }
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
-        
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

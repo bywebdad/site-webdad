@@ -61,6 +61,8 @@ export default function MiniappCoffeePage() {
                 'Build and manage reusable components for consistent interfaces across projects.',
               tags: ['Library', 'Variants'],
               imageSrc: '/projects/miniapp-coffee/2.png',
+              imageAlt: 'Скриншот интерфейса Miniapp Coffee'
+
             },
             {
               title: 'Административная панель',
