@@ -53,7 +53,7 @@ const CompanyIntro: FC<CompanyIntroProps> = ({
       {/* Фоновое изображение */}
       <img
         src={imageSrc}
-        alt=""
+        alt="Фоновое изображение команды компании"
         aria-hidden="true"
         className="absolute inset-0 -z-10 h-full w-full object-cover object-right opacity-10 md:object-center"
       />
