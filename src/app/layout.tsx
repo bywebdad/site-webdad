@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dev.webdad.by').replace(/\/$/, '');
@@ -45,11 +45,6 @@ export const metadata: Metadata = {
     ]
   },
   manifest: '/site.webmanifest',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#111827' }
-  ],
-  viewport: 'width=device-width, initial-scale=1',
   alternates: {
     canonical: siteUrl,
   },
@@ -66,12 +61,30 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#111827' }
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NM7X3JQT');`,
+          }}
+        />
+        
         <script
           dangerouslySetInnerHTML={{
             __html: `(() => { try {
@@ -85,7 +98,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-screen bg-white text-slate-900 dark:bg-gray-900 dark:text-white">{children}</body>
+      <body className="min-h-screen bg-white text-slate-900 dark:bg-gray-900 dark:text-white">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NM7X3JQT"
+            height="0" 
+            width="0" 
+            style={{display:'none',visibility:'hidden'}}
+          />
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

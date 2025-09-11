@@ -23,7 +23,10 @@ export const metadata: Metadata = {
     title: 'Аналитика рынка недвижимости',
     description:
       'Аналитика рынка недвижимости',
-    images: [{ url: '/projects/real-estate-analytics/01.png' }],
+    images: [{ 
+      url: '/projects/real-estate-analytics/01.png',
+      alt: 'Скриншот системы аналитики рынка недвижимости'
+    }],
     type: 'article',
   },
 };
@@ -68,6 +71,7 @@ export default function AmatarPage() {
                 'Система автоматически обновляется, отправляет оповещения о ключевых изменениях рынка, формирует прогнозы и сезонные тренды.',
               tags: ['Telegram', 'API'],
               imageSrc: '/projects/real-estate-analytics/03.png',
+              imageAlt: 'Скриншот системы аналитики рынка недвижимости',
               imageFit: 'cover',
               colSpanMd: 1,
             },
@@ -78,6 +82,7 @@ export default function AmatarPage() {
                  'Для сайта с нуля был создан дизайн. Заказчик предоставил нам логотип и фирменные цвета, от которых мы отталкивались при подборе дизайн-решений. Таким образом была создана полноценная дизайн-система, а также прототипы и фреймы страниц, которые передавались в разработку.',
               tags: ['Кастомизация', 'Дизайн-система', 'Прототипы', 'Фреймы'],
               imageSrc: '/projects/real-estate-analytics/09.png',
+              imageAlt: 'Скриншот системы аналитики рынка недвижимости',
               imageFit: 'cover',
               colSpanMd: 2,
             },
@@ -86,6 +91,7 @@ export default function AmatarPage() {
               description: 'Grafana интегрирована с PostgreSQL  что обеспечивает высокую производительность даже при больших объёмах.',
               tags: ['Юзабилити'],
               imageSrc: '/projects/real-estate-analytics/05.png',
+              imageAlt: 'Скриншот системы аналитики рынка недвижимости',
               imageFit: 'contain',
               colSpanMd: 1,
             },
