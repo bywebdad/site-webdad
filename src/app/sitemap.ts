@@ -1,10 +1,23 @@
 import type { MetadataRoute } from 'next';
 import { getAllProjects, type Project } from '../lib/projects';
-import { getAllPosts, type Post } from '../lib/posts';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projects = getAllProjects();
-  const posts = getAllPosts();
+  
+  // Получаем реальные статьи из CMS
+  let posts: Array<{ slug: string; date?: string }> = [];
+  try {
+    const { getAllPosts } = await import('../lib/cms/payload');
+    const cmsData = await getAllPosts({ limit: 500 });
+    posts = cmsData.map(post => ({
+      slug: post.slug,
+      date: post.date || post.publishedAt
+    }));
+  } catch (error) {
+    console.warn('Failed to fetch posts from CMS for sitemap:', error);
+    // Не добавляем статические посты в sitemap, если CMS недоступна
+    posts = [];
+  }
   
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://webdad.by').replace(/\/$/, '');
 
@@ -67,7 +80,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Статические проекты
+  // Только статические проекты (исключаем дублирование)
   const staticProjects = [
     'addseller',
     'addwine', 
@@ -82,33 +95,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'warehouse'
   ];
 
-  const staticProjectRoutes: MetadataRoute.Sitemap = staticProjects.map(slug => ({
+  const projectRoutes: MetadataRoute.Sitemap = staticProjects.map(slug => ({
     url: `${siteUrl}/projects/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
-  // Динамические проекты из projects.ts
-  const dynamicProjectRoutes: MetadataRoute.Sitemap = projects.map((project: Project) => ({
-    url: `${siteUrl}/projects/${project.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
-  // Посты блога
-  const postRoutes: MetadataRoute.Sitemap = posts.map((post: Post) => ({
+  // Посты блога из CMS
+  const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: 'monthly',
+    lastModified: post.date ? new Date(post.date) : new Date(),
+    changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
 
   return [
     ...staticRoutes,
-    ...staticProjectRoutes,
-    ...dynamicProjectRoutes,
+    ...projectRoutes,
     ...postRoutes,
   ];
 }

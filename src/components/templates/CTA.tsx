@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import GradientBlob from '@atoms/GradientBlob';
 import ContactModal from '@molecules/ContactModal';
+import ResponsiveImage from '@atoms/ResponsiveImage';
 
 export type CtaAction = {
   href: string;
@@ -89,12 +90,14 @@ const CTA: FC<CTAProps> = ({
             </div>
             </div>
             <div className="relative mt-16 h-80 lg:mt-8 lg:col-span-6">
-            <img
-              alt={imageAlt}
+            <ResponsiveImage
               src={imageSrc}
-              width={1824}
-              height={1080}
+              alt={imageAlt}
+              containerWidth={640}
+              containerHeight={466}
               className="absolute right-0 top-60 -translate-y-1/2 w-[40rem] max-w-none"
+              priority={false}
+              objectFit="contain"
             />
             </div>
           </div>
