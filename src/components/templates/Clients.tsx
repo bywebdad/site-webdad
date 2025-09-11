@@ -44,7 +44,7 @@ const defaultLogos: Logo[] = [
 
 const Clients: FC<ClientsProps> = ({
   id = 'clients',
-  title = 'Нам доверяют самые инновационные команды',
+  title = 'Компании которые нам доверяют',
   logos = defaultLogos,
   className = '',
 }) => {

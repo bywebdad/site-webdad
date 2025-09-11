@@ -35,11 +35,11 @@ export function middleware(request: NextRequest) {
   // Content Security Policy для предотвращения смешанного контента
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://mc.yandex.ru",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https: blob:",
     "font-src 'self' data:",
-    "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com",
+    "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://mc.yandex.ru",
     "media-src 'self' https:",
     "object-src 'none'",
     "base-uri 'self'",
