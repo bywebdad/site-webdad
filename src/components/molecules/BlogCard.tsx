@@ -28,7 +28,7 @@ const BlogCard: FC<BlogCardProps> = ({
 }) => {
   return (
     <article
-      className={`group relative h-[22rem] overflow-hidden rounded-2xl bg-gray-100 transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg md:h-[26rem] dark:bg-gray-900 ${className}`}
+      className={`group relative aspect-square overflow-hidden rounded-2xl bg-gray-100 transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg dark:bg-gray-900 ${className}`}
     >
       <div className="absolute inset-0">
         <Image

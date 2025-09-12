@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { criticalCSS } from '@lib/css-optimizer';
 import './globals.css';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://webdad.by').replace(/\/$/, '');
@@ -74,6 +75,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
+        {/* Критический CSS инлайн для устранения блокирующих запросов */}
+        <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
+        
+        {/* Fallback для браузеров без JS */}
+        <noscript>
+          <link rel="stylesheet" href="/globals.css" />
+        </noscript>
+
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -94,6 +103,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               const root = document.documentElement;
               if (theme === 'dark') { root.classList.add('dark'); }
               else { root.classList.remove('dark'); }
+              // Отмечаем что CSS загружен
+              root.classList.add('css-loaded');
             } catch (e) {} })();`,
           }}
         />

@@ -98,6 +98,13 @@ const nextConfig = {
               name: 'vendors',
               chunks: 'all',
             },
+            // Отдельный chunk для CSS
+            styles: {
+              name: 'styles',
+              test: /\.(css|scss|sass)$/,
+              chunks: 'all',
+              enforce: true,
+            },
           },
         },
       };
