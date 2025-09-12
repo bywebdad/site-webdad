@@ -21,18 +21,29 @@ const STATIC_ASSETS_REGEX = /\.(jpg|jpeg|png|webp|avif|gif|svg|ico|woff|woff2|tt
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const hostname = request.headers.get('host') || '';
-  const forwardedHost = request.headers.get('x-forwarded-host') || hostname;
-  const forwardedProto = request.headers.get('x-forwarded-proto') || 'https';
-  const targetHost = forwardedHost.startsWith('www.') ? forwardedHost.slice(4) : forwardedHost;
-  
-  // Нормализуем домен и порт: www -> apex, убираем явный порт, фиксируем протокол
-  if (hostname !== targetHost || request.nextUrl.port) {
-    const url = request.nextUrl.clone();
-    url.hostname = targetHost;
-    url.port = '';
-    url.protocol = `${forwardedProto}:`;
-    return NextResponse.redirect(url, 301);
+  const env = process.env.NODE_ENV || 'development';
+  const isDev = env !== 'production';
+  const hostHeader = request.headers.get('host') || '';
+  const [hostOnly, hostPort] = hostHeader.split(':');
+  const forwardedHost = request.headers.get('x-forwarded-host') || '';
+  const forwardedProto = request.headers.get('x-forwarded-proto') || request.nextUrl.protocol.replace(':', '') || 'http';
+  const hasProxy = Boolean(forwardedHost || request.headers.get('x-forwarded-proto'));
+  const isIpHost = /^\d+\.\d+\.\d+\.\d+$/.test(hostOnly) || hostOnly === 'localhost';
+
+  // Безопасная канониализация хоста: только в production и ТОЛЬКО за прокси.
+  // В dev, при обращении по IP/localhost или с явным портом — не редиректим, чтобы не ломать доступ извне.
+  if (!isDev && hasProxy) {
+    const targetFromProxy = (forwardedHost || hostHeader).replace(/^www\./, '');
+    const targetHostname = targetFromProxy.split(':')[0];
+    const needHostFix = hostOnly !== targetHostname;
+    const needPortFix = Boolean(hostPort);
+    if (needHostFix || needPortFix) {
+      const url = request.nextUrl.clone();
+      url.hostname = targetHostname;
+      url.port = '';
+      url.protocol = `${forwardedProto}:`;
+      return NextResponse.redirect(url, 301);
+    }
   }
 
   // Редирект trailing slash к каноническому URL (кроме корня)
