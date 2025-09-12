@@ -22,7 +22,7 @@ const posts: Post[] = [
     title: 'Hello World: первая статья в блоге',
     excerpt:
       'Добро пожаловать в наш блог! Рассказываем о целях, планах и как мы будем делиться практикой и инсайтами.',
-    coverSrc: '/blog/01.png',
+    coverSrc: '/blog/01.webp',
     coverAlt: 'Обложка статьи: ноутбук на столе',
     date: '2025-03-10',
     author: { name: 'Team NewSite' },
@@ -38,7 +38,7 @@ const posts: Post[] = [
     title: 'Интеграция с CRM для агентства недвижимости Upgrade',
     excerpt:
       'Как мы автоматизировали процессы подбора объектов и синхронизации данных с внешними системами.',
-    coverSrc: '/blog/02.png',
+    coverSrc: '/blog/02.webp',
     coverAlt: 'Скриншот интеграции CRM системы',
     date: '2025-02-15',
     author: { name: 'Team WEBDAD' },
@@ -54,7 +54,7 @@ const posts: Post[] = [
     title: 'Автоматизация рабочих процессов в Upgrade',
     excerpt:
       'Разработка системы автоматического подбора недвижимости и уведомлений для клиентов.',
-    coverSrc: '/blog/03.png',
+    coverSrc: '/blog/03.webp',
     coverAlt: 'Диаграмма автоматизированного процесса',
     date: '2025-01-20',
     author: { name: 'Team WEBDAD' },

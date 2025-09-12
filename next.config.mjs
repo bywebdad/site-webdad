@@ -140,8 +140,8 @@ const nextConfig = {
     return config;
   },
   images: {
-    // Отключаем оптимизацию изображений полностью
-    unoptimized: true,
+    // Включаем оптимизацию изображений
+    unoptimized: false,
     // Форматы изображений для оптимизации
     formats: ['image/webp', 'image/avif'],
     // Размеры для responsive изображений - оптимизированные под реальное использование
@@ -153,12 +153,11 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 год
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: ['images.unsplash.com', 's3.amazonaws.com']
-      .concat(s3Host ? [s3Host] : [])
-      .concat(cmsHost ? [cmsHost] : []),
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'localhost', port: '3001' },
+      { protocol: 'http', hostname: 'localhost', port: '3000' },
+      { protocol: 'http', hostname: 'localhost', port: '3001' },
       { protocol: 'https', hostname: 's3.amazonaws.com' },
       ...(s3Host ? [{ protocol: 'https', hostname: s3Host }] : []),
       ...(cmsPatterns.length ? cmsPatterns : []),

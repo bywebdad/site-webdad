@@ -7,7 +7,6 @@ import Footer from '@organisms/Footer';
 import Cases from '@templates/Cases';
 import Subscribe from '@templates/Subscribe';
 import Clients from '@templates/Clients';
-import CTA from '@templates/CTA';
 import Technologies from '@templates/Technologies';
 
 export const dynamic = 'force-dynamic';
@@ -24,7 +23,6 @@ export default function Page() {
         <WhyChooseUs />
         <Clients />
         <Technologies />
-        <CTA />
         <Blog limit={3} />
         <Subscribe />
       </main>

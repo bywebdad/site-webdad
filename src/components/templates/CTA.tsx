@@ -35,11 +35,6 @@ const CTA: FC<CTAProps> = ({
 }) => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const handlePrimaryClick = () => {
     if (primaryAction.label === 'Оставить заявку') {
@@ -95,15 +90,21 @@ const CTA: FC<CTAProps> = ({
             </div>
             </div>
             <div className="relative mt-16 h-80 lg:mt-8 lg:col-span-6 hidden md:block">
-              {isMounted && (
-                <ResponsiveImage 
+              {imageSrc === '/brand/01.webp' ? (
+                <img
                   src={imageSrc}
                   alt={imageAlt}
-                  containerWidth={640}
-                  containerHeight={466}
-                  className="absolute right-0 top-60 -translate-y-1/2 w-[40rem] max-w-none"
-                  priority={false}
-                  objectFit="contain"
+                  className="absolute inset-0 w-full h-full object-contain lg:object-cover"
+                  loading="eager"
+                />
+              ) : (
+                <ResponsiveImage
+                  src={imageSrc}
+                  alt={imageAlt}
+                  fill
+                  className="object-contain lg:object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               )}
             </div>

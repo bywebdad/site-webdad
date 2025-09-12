@@ -56,6 +56,7 @@ const ProjectsCards: FC<ProjectsCardsProps> = ({
               imageUrl={item.imageUrl}
               ctaVariant={item.ctaVariant}
               href={item.href}
+              className=""
             />
           ))}
         </div>
@@ -63,7 +64,7 @@ const ProjectsCards: FC<ProjectsCardsProps> = ({
           <div className="mt-6 md:mt-8 flex justify-center">
             <Link
               href={allHref}
-              className="inline-flex items-center gap-2 rounded-full bg-brand-500 dark:bg-jungle-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-brand-600 dark:hover:bg-jungle-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:focus-visible:ring-jungle-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-900 transition-colors duration-200"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-500 dark:bg-jungle-500 px-4 py-2 text-sm font-medium text-brand-500 dark:text-neutral-900 shadow-sm hover:bg-brand-600 dark:hover:bg-jungle-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:focus-visible:ring-jungle-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-neutral-900 transition-colors duration-200"
               aria-label={allLabel}
             >
               {allLabel}

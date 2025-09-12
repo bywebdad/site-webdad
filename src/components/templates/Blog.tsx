@@ -26,7 +26,7 @@ const Blog = async ({
       items = data.map((p: any) => ({
         title: p.title,
         href: `/blog/${p.slug}`,
-        imageSrc: p.coverSrc ?? '/blog/01.png',
+        imageSrc: p.coverSrc ?? '/blog/01.webp',
         imageAlt: p.coverAlt ?? p.title,
         date: p.date,
         author: p.author ? { name: p.author.name, avatarSrc: p.author.avatarSrc } : undefined,
@@ -47,7 +47,7 @@ const Blog = async ({
         items = allPosts.slice(0, limit).map((p: any) => ({
           title: p.title,
           href: `/blog/${p.slug}`,
-          imageSrc: p.coverSrc ?? '/blog/01.png',
+          imageSrc: p.coverSrc ?? '/blog/01.webp',
           imageAlt: p.coverAlt ?? p.title,
           date: p.date,
           author: p.author ? { name: p.author.name, avatarSrc: p.author.avatarSrc } : undefined,

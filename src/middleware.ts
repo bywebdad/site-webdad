@@ -46,6 +46,38 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  // Редиректы для старых английских URL
+  if (pathname === '/en') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
+    return NextResponse.redirect(url, 301);
+  }
+
+  if (pathname === '/en/about') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/company';
+    return NextResponse.redirect(url, 301);
+  }
+
+  if (pathname.startsWith('/en/cases/')) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace('/en/cases/', '/projects/');
+    return NextResponse.redirect(url, 301);
+  }
+
+  if (pathname === '/en/services/engineering') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/services/development';
+    return NextResponse.redirect(url, 301);
+  }
+
+  // Редирект со старых URL /cases/* на новые /projects/*
+  if (pathname.startsWith('/cases/')) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace('/cases/', '/projects/');
+    return NextResponse.redirect(url, 301);
+  }
+
   // Редирект trailing slash к каноническому URL (кроме корня)
   if (pathname.length > 1 && pathname.endsWith('/')) {
     const url = request.nextUrl.clone();

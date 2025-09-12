@@ -61,9 +61,9 @@ const ResponsiveImage = ({
 
   // Если заданы размеры контейнера, рассчитываем оптимальные размеры
   if (containerWidth && containerHeight && !finalWidth && !finalHeight) {
-    // Для /brand/01.webp знаем оригинальные размеры
+    // Для /brand/01.webp используем примерные пропорции нового изображения (16:10)
     if (src === '/brand/01.webp') {
-      const optimal = calculateOptimalSize(1873, 1365, containerWidth, containerHeight);
+      const optimal = calculateOptimalSize(1600, 1000, containerWidth, containerHeight);
       finalWidth = optimal.width;
       finalHeight = optimal.height;
     } else {
@@ -103,13 +103,17 @@ const ResponsiveImage = ({
   }
 
   const imageClasses = `
-    transition-opacity duration-300 
-    ${isLoading ? 'opacity-0' : 'opacity-100'}
+    transition-opacity duration-300 opacity-0
+    ${fill ? `object-${objectFit}` : `object-${objectFit}`}
+  `.trim();
+
+  const loadedImageClasses = `
+    transition-opacity duration-300 opacity-100
     ${fill ? `object-${objectFit}` : `object-${objectFit}`}
   `.trim();
 
   return (
-    <div className={`relative ${isLoading ? 'animate-pulse bg-gray-200 dark:bg-gray-700 rounded' : ''} ${className}`}>
+    <div className={`relative ${className}`}>
       <Image
         src={src}
         alt={alt}
@@ -119,7 +123,7 @@ const ResponsiveImage = ({
         priority={finalPriority}
         sizes={finalSizes}
         quality={finalQuality}
-        className={imageClasses}
+        className={isLoading ? imageClasses : loadedImageClasses}
         onLoad={handleLoad}
         onError={handleError}
         placeholder="blur"

@@ -125,24 +125,20 @@ const ProjectCard: FC<ProjectCardProps> = ({
       </div>
 
       {/* Низ: заголовок и описание под карточкой */}
-      <div className="py-5 flex-1 flex flex-col">
+      <div className="py-5">
         <h3 className="text-gray-900 dark:text-white text-lg md:text-xl font-semibold leading-snug tracking-tight mb-1">
           {title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-400 text-sm flex-1">{description}</p>
+        <p className="text-gray-600 dark:text-gray-400 text-sm">{description}</p>
       </div>
     </>
   );
 
-  const rootClasses = [
-    'group relative rounded-t-3xl h-full flex flex-col',
-    'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500',
-    className,
-  ].join(' ');
+  // Хардкод классов для полного устранения проблем с гидратацией
 
   if (href) {
     return (
-      <article className={rootClasses} aria-label={ariaLabel ?? title}>
+      <article className="group relative rounded-t-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500" aria-label={ariaLabel ?? title}>
         {/* Кликабельная зона только над изображением */}
         <Link href={href} className="absolute inset-x-0 top-0 aspect-square z-10" aria-label={ariaLabel ?? title} />
         {cardContent}
@@ -152,7 +148,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
 
   return (
     <article
-      className={rootClasses}
+      className="group relative rounded-t-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
       role={onClick ? 'button' : undefined}
       tabIndex={0}
       aria-label={ariaLabel ?? title}
