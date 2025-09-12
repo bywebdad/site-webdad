@@ -156,8 +156,11 @@ const nextConfig = {
     path: '/_next/image',
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
+<<<<<<< HEAD
       { protocol: 'https', hostname: 'localhost', port: '3001' },
       { protocol: 'http', hostname: 'localhost', port: '3000' },
+=======
+>>>>>>> fix/rollback-to-stable-state
       { protocol: 'http', hostname: 'localhost', port: '3001' },
       { protocol: 'https', hostname: 's3.amazonaws.com' },
       ...(s3Host ? [{ protocol: 'https', hostname: s3Host }] : []),
