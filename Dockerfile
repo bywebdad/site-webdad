@@ -22,7 +22,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV HOST=0.0.0.0
-ENV PORT=3000
+ENV PORT=3001
 
 # Install nginx for serving static files with compression
 RUN apk add --no-cache nginx nginx-mod-http-brotli
@@ -63,7 +63,7 @@ RUN echo '#!/bin/sh' > /app/start.sh && \
 EXPOSE 80 3000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost/ || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=5 \
+    CMD wget -q -O /dev/null http://localhost:3000/ || exit 1
 
 CMD ["/app/start.sh"]
