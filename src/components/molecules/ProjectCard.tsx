@@ -75,7 +75,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   const cardContent = (
     <>
       {/* Верх: медиа-превью (изображение/видео) с оверлеями */}
-      <div className="relative h-80 overflow-hidden rounded-t-3xl">
+      <div className="relative aspect-square overflow-hidden rounded-t-3xl">
         {isVideo ? (
           <video
             className="absolute inset-0 h-full w-full object-cover [transition:transform_300ms_ease] group-hover:scale-105"
@@ -144,7 +144,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
     return (
       <article className={rootClasses} aria-label={ariaLabel ?? title}>
         {/* Кликабельная зона только над изображением */}
-        <Link href={href} className="absolute inset-x-0 top-0 h-80 z-10" aria-label={ariaLabel ?? title} />
+        <Link href={href} className="absolute inset-x-0 top-0 aspect-square z-10" aria-label={ariaLabel ?? title} />
         {cardContent}
       </article>
     );

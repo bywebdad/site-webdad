@@ -14,7 +14,7 @@ export type CaseCardProps = {
 const CaseCard: FC<CaseCardProps> = ({ title, category, imageSrc, imageAlt, href = '#', className = '' }) => {
   return (
     <article className={`group relative overflow-hidden rounded-2xl bg-gray-100 transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg dark:bg-gray-900 ${className}`}>
-      <div className="relative h-[22rem] w-full md:h-[26rem]">
+      <div className="relative aspect-square w-full">
         <Image
           src={imageSrc}
           alt={imageAlt}
