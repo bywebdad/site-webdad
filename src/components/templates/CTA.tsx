@@ -1,7 +1,7 @@
 'use client';
 import type { FC, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GradientBlob from '@atoms/GradientBlob';
 import ContactModal from '@molecules/ContactModal';
 import ResponsiveImage from '@atoms/ResponsiveImage';
@@ -35,6 +35,11 @@ const CTA: FC<CTAProps> = ({
 }) => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handlePrimaryClick = () => {
     if (primaryAction.label === 'Оставить заявку') {
@@ -89,16 +94,18 @@ const CTA: FC<CTAProps> = ({
               </button>
             </div>
             </div>
-            <div className="relative mt-16 h-80 lg:mt-8 lg:col-span-6">
-            <ResponsiveImage
-              src={imageSrc}
-              alt={imageAlt}
-              containerWidth={640}
-              containerHeight={466}
-              className="absolute right-0 top-60 -translate-y-1/2 w-[40rem] max-w-none"
-              priority={false}
-              objectFit="contain"
-            />
+            <div className="relative mt-16 h-80 lg:mt-8 lg:col-span-6 hidden md:block">
+              {isMounted && (
+                <ResponsiveImage 
+                  src={imageSrc}
+                  alt={imageAlt}
+                  containerWidth={640}
+                  containerHeight={466}
+                  className="absolute right-0 top-60 -translate-y-1/2 w-[40rem] max-w-none"
+                  priority={false}
+                  objectFit="contain"
+                />
+              )}
             </div>
           </div>
         </div>

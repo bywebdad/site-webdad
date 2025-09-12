@@ -17,27 +17,27 @@ type ClientsProps = {
 const defaultLogos: Logo[] = [
   {
     src: '/clients/addwine.png',
-    alt: 'Transistor',
+    alt: 'addwine',
     className: 'col-span-2 max-h-12 w-full object-contain lg:col-span-1',
   },
   {
     src: '/clients/grand.png',
-    alt: 'Reform',
+    alt: 'grand',
     className: 'col-span-2 max-h-12 w-full object-contain lg:col-span-1',
   },
   {
     src: '/clients/atlant.png',
-    alt: 'Tuple',
+    alt: 'atlant',
     className: 'col-span-2 max-h-12 w-full object-contain lg:col-span-1',
   },
   {
     src: '/clients/wikidom.png',
-    alt: 'SavvyCal',
+    alt: 'wikidom',
     className: 'col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1',
   },
   {
     src: '/clients/wdr.png',
-    alt: 'Statamic',
+    alt: 'wdr',
     className: 'col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1',
   },
 ];
