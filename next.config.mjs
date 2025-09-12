@@ -34,8 +34,6 @@ const nextConfig = {
   // Экспериментальные функции для оптимизации
   experimental: {
     optimizePackageImports: ['@headlessui/react', '@heroicons/react'],
-    // Используем browserslist для SWC
-    browsersListForSWC: true,
   },
   
   // Настройки для улучшения производительности
@@ -153,8 +151,6 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 год
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Увеличиваем лимиты для больших изображений
-    imageSizeLimit: 50 * 1024 * 1024, // 50MB
     // Настройки для production
     loader: 'default',
     path: '/_next/image',
