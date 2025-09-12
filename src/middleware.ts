@@ -3,15 +3,16 @@ import { NextRequest, NextResponse } from 'next/server';
 // Кэшируем CSP строку для избежания повторного создания
 const CSP_HEADER = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://mc.yandex.ru",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://mc.yandex.ru https://mc.yandex.md",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https: blob:",
   "font-src 'self' data:",
-  "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://mc.yandex.ru",
+  "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://mc.yandex.ru https://mc.yandex.md",
   "media-src 'self' https:",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
+  "frame-src 'self' https://mc.yandex.ru https://mc.yandex.md",
   "frame-ancestors 'none'",
   "upgrade-insecure-requests"
 ].join('; ');

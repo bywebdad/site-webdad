@@ -16,11 +16,6 @@ COPY . .
 # Build with optimizations enabled
 RUN npm run build
 
-FROM nginx:alpine AS nginx-stage
-# Install brotli module for nginx
-RUN apk add --no-cache nginx-mod-http-brotli
-COPY nginx-docker.conf /etc/nginx/conf.d/default.conf
-
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
@@ -30,19 +25,39 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN apk add --no-cache nginx nginx-mod-http-brotli
 
 # Copy nginx configuration
-COPY --from=nginx-stage /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx-docker.conf /etc/nginx/conf.d/default.conf
+
+# Создаем необходимые директории для nginx
+RUN mkdir -p /var/log/nginx /var/cache/nginx /var/run/nginx
 
 # Standalone runtime (configured via output: 'standalone' in next.config)
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-# Копируем все статические файлы включая изображения проектов
+
+# КРИТИЧНО: Копируем все статические файлы включая изображения проектов
 COPY --from=builder /app/public ./public
 
-# Create startup script
+# Проверяем, что файлы скопированы правильно
+RUN ls -la /app/public/ && \
+    ls -la /app/public/projects/ && \
+    ls -la /app/public/clients/ && \
+    ls -la /app/public/brand/
+
+# Create startup script with proper error handling
 RUN echo '#!/bin/sh' > /app/start.sh && \
+    echo 'set -e' >> /app/start.sh && \
+    echo 'echo "Starting nginx..."' >> /app/start.sh && \
+    echo 'nginx -t' >> /app/start.sh && \
     echo 'nginx &' >> /app/start.sh && \
-    echo 'node server.js' >> /app/start.sh && \
+    echo 'echo "Starting Next.js server..."' >> /app/start.sh && \
+    echo 'exec node server.js' >> /app/start.sh && \
     chmod +x /app/start.sh
 
+# Expose ports
 EXPOSE 80 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/ || exit 1
+
 CMD ["/app/start.sh"]

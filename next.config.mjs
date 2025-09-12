@@ -153,6 +153,11 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 год
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Увеличиваем лимиты для больших изображений
+    imageSizeLimit: 50 * 1024 * 1024, // 50MB
+    // Настройки для production
+    loader: 'default',
+    path: '/_next/image',
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'localhost', port: '3001' },
