@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { draftMode } from 'next/headers';
 
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://webdad.by').replace(/\/$/, '');
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const secret = searchParams.get('secret');
@@ -10,5 +12,6 @@ export async function GET(req: Request) {
   }
   const dm = await draftMode();
   dm.enable();
-  return NextResponse.redirect(new URL(`/blog/${slug}?preview=1`, req.url));
+  const to = `${SITE_URL}/blog/${slug}?preview=1`;
+  return NextResponse.redirect(to);
 }
