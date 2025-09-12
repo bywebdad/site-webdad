@@ -149,7 +149,9 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 год
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Убираем deprecated domains, используем только remotePatterns
+    domains: ['images.unsplash.com', 's3.amazonaws.com']
+      .concat(s3Host ? [s3Host] : [])
+      .concat(cmsHost ? [cmsHost] : []),
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'localhost', port: '3001' },
