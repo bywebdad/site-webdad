@@ -35,25 +35,35 @@ function runLighthouse() {
     execSync(command, { stdio: 'inherit' });
     
     // Читаем результаты
-    const results = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
-    return analyzeResults(results);
+    const raw = fs.readFileSync(outputPath, 'utf8');
+    const parsed = JSON.parse(raw);
+    return analyzeResults(parsed);
     
   } catch (error) {
-    console.error('❌ Ошибка при запуске Lighthouse:', error.message);
+    console.error('❌ Ошибка при запуске Lighthouse:', error && error.message ? error.message : error);
     return null;
   }
 }
 
 // Анализ результатов
 function analyzeResults(results) {
-  const metrics = {
-    fcp: results.lhr.audits['first-contentful-paint'].numericValue,
-    lcp: results.lhr.audits['largest-contentful-paint'].numericValue,
-    cls: results.lhr.audits['cumulative-layout-shift'].numericValue,
-    fid: results.lhr.audits['max-potential-fid'].numericValue,
-    ttfb: results.lhr.audits['server-response-time'].numericValue,
-    performanceScore: results.lhr.categories.performance.score * 100
-  };
+  // Lighthouse v12 CLI пишет LHR напрямую (а не { lhr: {...} })
+  const lhr = results && results.lhr ? results.lhr : results;
+  if (!lhr || !lhr.audits || !lhr.categories) {
+    throw new Error('Invalid Lighthouse JSON format: missing audits/categories');
+  }
+
+  const getAudit = (id) => lhr.audits && lhr.audits[id];
+
+  const fcp = getAudit('first-contentful-paint')?.numericValue ?? NaN;
+  const lcp = getAudit('largest-contentful-paint')?.numericValue ?? NaN;
+  const cls = getAudit('cumulative-layout-shift')?.numericValue ?? NaN;
+  // В новых версиях Lighthouse метрика входной задержки менялась
+  const fid = getAudit('max-potential-fid')?.numericValue ?? getAudit('total-blocking-time')?.numericValue ?? NaN;
+  const ttfb = getAudit('server-response-time')?.numericValue ?? NaN;
+  const performanceScore = (lhr.categories.performance?.score ?? 0) * 100;
+
+  const metrics = { fcp, lcp, cls, fid, ttfb, performanceScore };
 
   console.log('\n📊 Результаты анализа производительности:');
   console.log('==========================================');
@@ -65,23 +75,24 @@ function analyzeResults(results) {
   console.log(`🌐 Time to First Byte: ${metrics.ttfb.toFixed(0)}ms ${getStatus(metrics.ttfb, config.thresholds.ttfb)}`);
 
   // Рекомендации по улучшению
-  generateRecommendations(results, metrics);
+  generateRecommendations(lhr, metrics);
 
   return metrics;
 }
 
 // Получение статуса метрики
 function getStatus(value, threshold, reverse = false) {
+  if (Number.isNaN(value)) return '❔';
   const isGood = reverse ? value <= threshold : value <= threshold;
   return isGood ? '✅' : '❌';
 }
 
 // Генерация рекомендаций
-function generateRecommendations(results, metrics) {
+function generateRecommendations(lhr, metrics) {
   console.log('\n💡 Рекомендации по улучшению:');
   console.log('==============================');
 
-  const opportunities = results.lhr.audits;
+  const opportunities = lhr.audits || {};
   
   // Проверяем основные проблемы
   if (metrics.ttfb > config.thresholds.ttfb) {

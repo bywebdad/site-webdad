@@ -122,7 +122,7 @@ const ResponsiveImage = ({
     priority: finalPriority,
     sizes: finalSizes,
     quality: finalQuality,
-    className: imageClasses,
+    className: isLoading ? imageClasses : loadedImageClasses,
     onLoad: handleLoad,
     onError: handleError,
     placeholder: 'blur' as const,
@@ -133,28 +133,6 @@ const ResponsiveImage = ({
   } as const;
 
   return (
-<<<<<<< HEAD
-    <div className={`relative ${className}`}>
-      <Image
-        src={src}
-        alt={alt}
-        width={finalWidth}
-        height={finalHeight}
-        fill={fill}
-        priority={finalPriority}
-        sizes={finalSizes}
-        quality={finalQuality}
-        className={isLoading ? imageClasses : loadedImageClasses}
-        onLoad={handleLoad}
-        onError={handleError}
-        placeholder="blur"
-        blurDataURL={
-          finalWidth && finalHeight 
-            ? generatePlaceholder(finalWidth, finalHeight)
-            : "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-        }
-      />
-=======
     <div className={`relative ${isLoading ? 'animate-pulse bg-gray-200 dark:bg-gray-700 rounded' : ''} ${className}`}>
       {isFillMode ? (
         <Image
@@ -168,7 +146,6 @@ const ResponsiveImage = ({
           height={finalHeight}
         />
       )}
->>>>>>> fix/rollback-to-stable-state
     </div>
   );
 };

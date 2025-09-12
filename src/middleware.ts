@@ -7,17 +7,12 @@ const CSP_HEADER = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https: blob:",
   "font-src 'self' data:",
-<<<<<<< HEAD
-  "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://mc.yandex.ru https://mc.yandex.md",
-=======
-  "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://mc.yandex.ru",
+  "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://scripts.clarity.ms https://mc.yandex.ru https://mc.yandex.md",
   "frame-src 'self' https://www.googletagmanager.com https://mc.yandex.ru https://mc.yandex.md https://www.clarity.ms",
->>>>>>> fix/rollback-to-stable-state
   "media-src 'self' https:",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
-  "frame-src 'self' https://mc.yandex.ru https://mc.yandex.md",
   "frame-ancestors 'none'",
   "upgrade-insecure-requests"
 ].join('; ');
