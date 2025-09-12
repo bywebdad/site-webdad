@@ -140,6 +140,8 @@ const nextConfig = {
     return config;
   },
   images: {
+    // Отключаем оптимизацию изображений полностью
+    unoptimized: true,
     // Форматы изображений для оптимизации
     formats: ['image/webp', 'image/avif'],
     // Размеры для responsive изображений - оптимизированные под реальное использование

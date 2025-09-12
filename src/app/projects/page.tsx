@@ -120,7 +120,7 @@ export default function ProjectsPage() {
           secondaryHref="#projects-list"
           secondaryLabel="Смотреть кейсы"
         />
-        <ProjectsCards id="projects-list" className="py-16" items={items} />
+        <ProjectsCards id="projects-list" items={items} />
       </main>
       <Footer />
     </div>
