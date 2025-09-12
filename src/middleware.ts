@@ -22,11 +22,16 @@ const STATIC_ASSETS_REGEX = /\.(jpg|jpeg|png|webp|avif|gif|svg|ico|woff|woff2|tt
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const hostname = request.headers.get('host') || '';
+  const forwardedHost = request.headers.get('x-forwarded-host') || hostname;
+  const forwardedProto = request.headers.get('x-forwarded-proto') || 'https';
+  const targetHost = forwardedHost.startsWith('www.') ? forwardedHost.slice(4) : forwardedHost;
   
-  // Быстрый редирект с www на без www
-  if (hostname.startsWith('www.')) {
+  // Нормализуем домен и порт: www -> apex, убираем явный порт, фиксируем протокол
+  if (hostname !== targetHost || request.nextUrl.port) {
     const url = request.nextUrl.clone();
-    url.hostname = hostname.slice(4); // Быстрее чем replace
+    url.hostname = targetHost;
+    url.port = '';
+    url.protocol = `${forwardedProto}:`;
     return NextResponse.redirect(url, 301);
   }
 
