@@ -75,13 +75,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
-        {/* Критический CSS инлайн для устранения блокирующих запросов */}
+        {/* Критический CSS инлайн для улучшения производительности */}
         <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
-        
-        {/* Fallback для браузеров без JS */}
-        <noscript>
-          <link rel="stylesheet" href="/globals.css" />
-        </noscript>
 
         {/* Google Tag Manager */}
         <script
@@ -109,7 +104,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       </head>
-      <body className="min-h-screen bg-white text-slate-900 dark:bg-gray-900 dark:text-white">
+      <body className="min-h-screen bg-white text-slate-900 dark:bg-gray-900 dark:text-white" suppressHydrationWarning>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
