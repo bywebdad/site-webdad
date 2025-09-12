@@ -137,7 +137,7 @@ const nextConfig = {
       .concat(cmsHost ? [cmsHost] : []),
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'localhost', port: '3001' },
+      { protocol: 'http', hostname: 'localhost', port: '3001' },
       { protocol: 'https', hostname: 's3.amazonaws.com' },
       ...(s3Host ? [{ protocol: 'https', hostname: s3Host }] : []),
       ...(cmsPatterns.length ? cmsPatterns : []),

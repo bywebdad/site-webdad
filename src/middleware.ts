@@ -8,6 +8,7 @@ const CSP_HEADER = [
   "img-src 'self' data: https: blob:",
   "font-src 'self' data:",
   "connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://mc.yandex.ru",
+  "frame-src 'self' https://www.googletagmanager.com https://mc.yandex.ru https://mc.yandex.md https://www.clarity.ms",
   "media-src 'self' https:",
   "object-src 'none'",
   "base-uri 'self'",

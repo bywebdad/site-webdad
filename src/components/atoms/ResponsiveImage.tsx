@@ -108,27 +108,40 @@ const ResponsiveImage = ({
     ${fill ? `object-${objectFit}` : `object-${objectFit}`}
   `.trim();
 
+  // Безопасный режим: если не заданы размеры и не включен fill, переключаемся на fill
+  const isFillMode = fill || !finalWidth || !finalHeight;
+
+  // Собираем пропсы для <Image>, исключая одновременную передачу width/height и fill
+  const imageProps = {
+    src,
+    alt,
+    priority: finalPriority,
+    sizes: finalSizes,
+    quality: finalQuality,
+    className: imageClasses,
+    onLoad: handleLoad,
+    onError: handleError,
+    placeholder: 'blur' as const,
+    blurDataURL:
+      finalWidth && finalHeight
+        ? generatePlaceholder(finalWidth, finalHeight)
+        : "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==",
+  } as const;
+
   return (
     <div className={`relative ${isLoading ? 'animate-pulse bg-gray-200 dark:bg-gray-700 rounded' : ''} ${className}`}>
-      <Image
-        src={src}
-        alt={alt}
-        width={finalWidth}
-        height={finalHeight}
-        fill={fill}
-        priority={finalPriority}
-        sizes={finalSizes}
-        quality={finalQuality}
-        className={imageClasses}
-        onLoad={handleLoad}
-        onError={handleError}
-        placeholder="blur"
-        blurDataURL={
-          finalWidth && finalHeight 
-            ? generatePlaceholder(finalWidth, finalHeight)
-            : "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-        }
-      />
+      {isFillMode ? (
+        <Image
+          {...imageProps}
+          fill
+        />
+      ) : (
+        <Image
+          {...imageProps}
+          width={finalWidth}
+          height={finalHeight}
+        />
+      )}
     </div>
   );
 };
