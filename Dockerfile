@@ -25,6 +25,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN apk add --no-cache nginx nginx-mod-http-brotli
 
 # Copy nginx configuration
+# Root nginx.conf with http { include conf.d/*.conf; }
+COPY nginx-root.conf /etc/nginx/nginx.conf
+# Site server config (include-style)
 COPY nginx-docker.conf /etc/nginx/conf.d/default.conf
 
 # Создаем необходимые директории для nginx
