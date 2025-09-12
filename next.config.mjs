@@ -34,6 +34,8 @@ const nextConfig = {
   // Экспериментальные функции для оптимизации
   experimental: {
     optimizePackageImports: ['@headlessui/react', '@heroicons/react'],
+    // Используем browserslist для SWC
+    browsersListForSWC: true,
   },
   
   // Настройки для улучшения производительности
@@ -116,6 +118,14 @@ const nextConfig = {
       config.resolve.alias = {
         ...config.resolve.alias,
         'core-js/modules': false,
+        // Отключаем пакетные полифилы для базовых возможностей (Baseline)
+        'array.prototype.flat': false,
+        'array.prototype.flatmap': false,
+        'array.prototype.at': false,
+        'object.fromentries': false,
+        'object.hasown': false,
+        'string.prototype.trimend': false,
+        'string.prototype.trimstart': false,
       };
     }
     

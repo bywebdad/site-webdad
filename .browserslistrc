@@ -1,12 +1,17 @@
 # Современные браузеры для уменьшения размера полифилов
 # Это уберет полифилы для Array.at, Array.flat, Object.fromEntries и др.
 
-# Production browsers
-> 0.5%
-last 2 versions
+# Production browsers (современные, без устаревших платформ)
+last 2 chrome versions
+last 2 firefox versions
+last 2 edge versions
+last 2 safari major versions
+last 2 ios_saf major versions
 not dead
-not ie 11
+not ie <= 11
 not op_mini all
+not android <= 4.4.4
+not samsung <= 14
 
 # Development
 last 1 chrome version
