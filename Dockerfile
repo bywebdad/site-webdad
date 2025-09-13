@@ -60,7 +60,7 @@ RUN echo '#!/bin/sh' > /app/start.sh && \
     chmod +x /app/start.sh
 
 # Expose ports
-EXPOSE 80 3000
+EXPOSE 3000
 
 # Health check (nginx on port 80)
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=5 \
