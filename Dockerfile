@@ -24,46 +24,11 @@ ENV HOSTNAME=0.0.0.0
 ENV HOST=0.0.0.0
 ENV PORT=3000
 
-# Install nginx for serving static files with compression
-RUN apk add --no-cache nginx nginx-mod-http-brotli
-
-# Copy nginx configuration
-# Root nginx.conf with http { include conf.d/*.conf; }
-COPY nginx-root.conf /etc/nginx/nginx.conf
-# Site server config (include-style)
-COPY nginx-docker.conf /etc/nginx/conf.d/default.conf
-
-# Создаем необходимые директории для nginx
-RUN mkdir -p /var/log/nginx /var/cache/nginx /var/run/nginx
-
-# Standalone runtime (configured via output: 'standalone' in next.config)
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-
-# КРИТИЧНО: Копируем все статические файлы включая изображения проектов
 COPY --from=builder /app/public ./public
-
-# Проверяем, что файлы скопированы правильно
-RUN ls -la /app/public/ && \
-    ls -la /app/public/projects/ && \
-    ls -la /app/public/clients/ && \
-    ls -la /app/public/brand/
-
-# Create startup script with proper error handling
-RUN echo '#!/bin/sh' > /app/start.sh && \
-    echo 'set -e' >> /app/start.sh && \
-    echo 'echo "Starting nginx..."' >> /app/start.sh && \
-    echo 'nginx -t' >> /app/start.sh && \
-    echo 'nginx &' >> /app/start.sh && \
-    echo 'echo "Starting Next.js server..."' >> /app/start.sh && \
-    echo 'exec node server.js' >> /app/start.sh && \
-    chmod +x /app/start.sh
 
 # Expose ports
 EXPOSE 3000
 
-# Health check (nginx on port 80)
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=5 \
-    CMD wget -q -O /dev/null http://localhost/ || exit 1
-
-CMD ["/app/start.sh"]
+CMD ["node", "server.js"]
